@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
-import  Grid  from './Grid/Grid';
+// import  Grid  from './Grid/Grid';
 
 const Test = () => {
   const { getBreeds } = useActions();
@@ -14,7 +14,8 @@ const Test = () => {
   console.log(data);
 
   return (
-    <Grid  breeds={data}/>
+    <></>
+    // <Grid  breeds={data}/>
   );
 };
 
