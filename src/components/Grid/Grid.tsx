@@ -21,8 +21,8 @@ export const Grid: React.FC<GridProps> = ({ data, renderItem }) => {
     <> 
       {
         grouped.map((arr, index) => (
-          <div className={styles.container}>
-            <div className={styles.grid_container} key={index}>
+          <div className={styles.container} key={index}>
+            <div className={styles.grid_container}>
               {
                 arr.map(renderItem)
               }

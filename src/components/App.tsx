@@ -1,6 +1,10 @@
 import { Provider } from 'react-redux';
 import { store } from '../state';
-import { Grid } from './Grid/Grid';
+// import { Grid } from './Grid/Grid';
+import { Approved } from '../assets'; 
+import { Button } from './Button/Button';
+import { IconButton } from './IconButton/IconButton';
+
 
 type Mock = {
   id: number;
@@ -39,11 +43,28 @@ const renderItem = (chunk: Mock, index: number) => (
   <div key={index}></div>
   );
 
+const testBtnClick = (e: React.SyntheticEvent): void => {
+  console.log('clicked');
+}
+
 function App() {
   return (
     <Provider store={store}>
-      <div>
-        <Grid data={mockArray} renderItem={renderItem}/>
+      <div style={{backgroundColor: 'grey', padding: '20px'}}>
+        {/* <Grid data={mockArray} renderItem={renderItem}/> */}
+
+      <Button onclick={testBtnClick} variant='white'>voting</Button>
+      <Button onclick={testBtnClick} variant='satin'>voting</Button>
+      <Button onclick={testBtnClick} variant='geraldine'>voting</Button>
+
+      <IconButton onclick={testBtnClick} variant='white' icon='sad'/>
+      <IconButton onclick={testBtnClick} variant='satin' icon='smile'/>
+      <IconButton onclick={testBtnClick} variant='geraldine' icon='magnifying_glass'/>
+      <IconButton onclick={testBtnClick} variant='geraldine' icon='approved'/>
+      <IconButton onclick={testBtnClick} variant='satin' icon='arrow_left'/>
+
+      <Approved width="100px" height="100px" />
+
       </div>
     </Provider>
   );

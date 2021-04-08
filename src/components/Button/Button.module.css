@@ -1,0 +1,33 @@
+.btn {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+ 
+  border-radius: 10px;
+  width: 138px;
+  height: 36px;
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #FF868E;
+}
+
+.btn_white {
+  background-color: #FFFFFF;
+}
+
+.btn_satin {
+  background-color: #FBE0DC;
+}
+
+.btn_geraldine {
+  color: #FFFFFF; 
+  background-color: #FF868E;
+}

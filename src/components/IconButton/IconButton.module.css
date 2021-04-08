@@ -1,0 +1,14 @@
+.btn_icon {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+}
+
+.icon path {
+  stroke: #ffffff;
+  fill: #ffffff;
+ }
