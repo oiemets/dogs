@@ -1,18 +1,16 @@
 import React from 'react';
 import styles from './Grid.module.css';
 
-interface GridProps {
-  data: { 
-    id: number;
-    name: string;
-    age: number
-  } [];
-  renderItems: any;
+export type GridProps  = {
+  data: any[];
+  renderItem: (chunk: any, index: number) => JSX.Element;
 }
 
-const Grid: React.FC<GridProps> = ({ data, renderItems }) => {
-    const groupingByTens = data.reduce((acc: Array<any>, item, index) => {
-      const chunkIndex = Math.floor(index / 10);
+const GROUP_BY = 10;
+
+export const Grid: React.FC<GridProps> = ({ data, renderItem }) => {
+    const grouped = data.reduce<any[][]>((acc: Array<any>, item, index) => {
+      const chunkIndex = Math.floor(index / GROUP_BY);
       if(!acc[chunkIndex]) {
         acc[chunkIndex] = [];
       }
@@ -22,11 +20,11 @@ const Grid: React.FC<GridProps> = ({ data, renderItems }) => {
   return (
     <> 
       {
-        groupingByTens.map((arr, index) => (
+        grouped.map((arr, index) => (
           <div className={styles.container}>
             <div className={styles.grid_container} key={index}>
               {
-                arr.map(renderItems)
+                arr.map(renderItem)
               }
             </div>
           </div> 
@@ -35,5 +33,3 @@ const Grid: React.FC<GridProps> = ({ data, renderItems }) => {
     </>
   );
 };
-
-export default Grid;

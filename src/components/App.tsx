@@ -1,8 +1,14 @@
 import { Provider } from 'react-redux';
 import { store } from '../state';
-import Grid from './Grid/Grid';
+import { Grid } from './Grid/Grid';
 
-const mockArray = [
+type Mock = {
+  id: number;
+  name: string;
+  age: number;
+}
+
+const mockArray: Mock[] = [
   { id: 1, name: 'Jack', age: 23 },
   { id: 2, name: 'John', age: 15 },
   { id: 3, name: 'Bill', age: 43 },
@@ -29,7 +35,7 @@ const mockArray = [
   { id: 24, name: 'Stan', age: 17 },
 ];
 
-const renderItems = (ob: typeof mockArray, index: number) => (
+const renderItem = (chunk: Mock, index: number) => (
   <div key={index}></div>
   );
 
@@ -37,7 +43,7 @@ function App() {
   return (
     <Provider store={store}>
       <div>
-        <Grid data={mockArray} renderItems={renderItems}/>
+        <Grid data={mockArray} renderItem={renderItem}/>
       </div>
     </Provider>
   );
