@@ -1,4 +1,5 @@
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { store } from '../state';
 // import { Grid } from './Grid/Grid';
 import { Approved } from '../assets'; 
@@ -50,37 +51,40 @@ const testBtnClick = (e: React.SyntheticEvent): void => {
 function App() {
   return (
     <Provider store={store}>
-      <div style={{backgroundColor: 'grey', padding: '20px'}}>
-        {/* <Grid data={mockArray} renderItem={renderItem}/> */}
+      <Router>
 
-      <Button onclick={testBtnClick} variant='white'>voting</Button>
-      <Button onclick={testBtnClick} variant='satin'>voting</Button>
-      <Button onclick={testBtnClick} variant='geraldine'>voting</Button>
-      
+        <div style={{backgroundColor: 'grey', padding: '20px'}}>
+          {/* <Grid data={mockArray} renderItem={renderItem}/> */}
 
-      <IconButton onclick={testBtnClick} variant='white' icon='sad'color='pink'/>
-      <IconButton onclick={testBtnClick} variant='satin' icon='sad'color='pink'/>
-      <IconButton onclick={testBtnClick} variant='geraldine' icon='sad'color=''/>
+          <Button onclick={testBtnClick} variant='white'>voting</Button>
+          <Button onclick={testBtnClick} variant='satin'>voting</Button>
+          <Button onclick={testBtnClick} variant='geraldine'>voting</Button>
+          
 
-      <IconButton onclick={testBtnClick} variant='white' icon='smile' color='orange'/>
-      <IconButton onclick={testBtnClick} variant='satin' icon='smile' color='orange'/>
-      <IconButton onclick={testBtnClick} variant='geraldine' icon='smile' color='orange'/>
+          <IconButton onclick={testBtnClick} variant='white' icon='sad'color='pink'/>
+          <IconButton onclick={testBtnClick} variant='satin' icon='sad'color='pink'/>
+          <IconButton onclick={testBtnClick} variant='geraldine' icon='sad'color=''/>
 
-      <IconButton onclick={testBtnClick} variant='white' icon='magnifying_glass' color='green'/>
-      <IconButton onclick={testBtnClick} variant='satin' icon='magnifying_glass' color='white'/>
-      <IconButton onclick={testBtnClick} variant='geraldine' icon='magnifying_glass' color='white'/>
+          <IconButton onclick={testBtnClick} variant='white' icon='smile' color='orange'/>
+          <IconButton onclick={testBtnClick} variant='satin' icon='smile' color='orange'/>
+          <IconButton onclick={testBtnClick} variant='geraldine' icon='smile' color='orange'/>
 
-      <IconButton onclick={testBtnClick} variant='white' icon='approved' color='orange'/>
-      <IconButton onclick={testBtnClick} variant='satin' icon='approved' color='white'/>
-      <IconButton onclick={testBtnClick} variant='geraldine' icon='approved' color='white'/>
+          <IconButton onclick={testBtnClick} variant='white' icon='magnifying_glass' color='green'/>
+          <IconButton onclick={testBtnClick} variant='satin' icon='magnifying_glass' color='white'/>
+          <IconButton onclick={testBtnClick} variant='geraldine' icon='magnifying_glass' color='white'/>
 
-      <IconButton onclick={testBtnClick} variant='satin' icon='arrow_left' color=''/>
-      <IconButton onclick={testBtnClick} variant='white' icon='heart' color=''/>
-      <IconButton onclick={testBtnClick} variant='satin' icon='heart_filled' color=''/>
+          <IconButton onclick={testBtnClick} variant='white' icon='approved' color='orange'/>
+          <IconButton onclick={testBtnClick} variant='satin' icon='approved' color='white'/>
+          <IconButton onclick={testBtnClick} variant='geraldine' icon='approved' color='white'/>
+
+          <IconButton onclick={testBtnClick} variant='satin' icon='arrow_left' color=''/>
+          <IconButton onclick={testBtnClick} variant='white' icon='heart' color=''/>
+          <IconButton onclick={testBtnClick} variant='satin' icon='heart_filled' color=''/>
 
 
-      <Approved width="100px" height="100px" />
-      </div>
+          <Approved width="100px" height="100px" />
+        </div>
+      </Router>
     </Provider>
   );
 }
