@@ -1,9 +1,9 @@
 .btn {
   border: none;
-  margin: 0;
+  /* margin: 0;
   padding: 0;
   width: auto;
-  overflow: visible;
+  overflow: visible; */
  
   border-radius: 10px;
   width: 138px;
@@ -23,11 +23,37 @@
   background-color: #FFFFFF;
 }
 
+.btn_white path {
+  fill: #FF868E;
+}
+
 .btn_satin {
   background-color: #FBE0DC;
+}
+
+.btn_satin path {
+  fill: #FF868E;
 }
 
 .btn_geraldine {
   color: #FFFFFF; 
   background-color: #FF868E;
 }
+
+.btn_geraldine path {
+  fill: #ffffff;
+}
+
+
+
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #FBE0DC;
+}
+
+.btn:active {
+  color: #ffffff;
+  background-color: #FF868E;
+}
+

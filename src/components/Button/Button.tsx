@@ -20,7 +20,7 @@ const btnTheme = (variant: string): string => {
     case 'geraldine': return geraldine;
     default: return '';
   }
-}
+};
 
 export const Button: React.FC<ButtonProps> = ({ children, onclick, variant, className }) => {
   return (

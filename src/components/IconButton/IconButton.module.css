@@ -1,14 +1,24 @@
-.btn_icon {
+.icon {
   margin: 0;
   padding: 0;
-  width: auto;
   overflow: visible;
   border-radius: 20px;
   width: 60px;
   height: 60px;
 }
 
-.icon path {
-  stroke: #ffffff;
+.white path {
   fill: #ffffff;
- }
+}
+
+.pink path {
+  fill: #FF868E;
+}
+
+.green path {
+  fill: #97EAB9;
+}
+
+.orange path {
+  fill: #FFD280;
+}

@@ -9,11 +9,12 @@ import {
 
 interface IconButtonProps extends ButtonProps {
   icon: string;
+  color: string;
 };
 
 const iconPicker = (icon: string) => {
   switch (icon) {
-    case 'approved': return <Approved />;
+    case 'approved': return <Approved/>;
     case 'arrow_left': return <ArrowLeft/>;
     case 'close': return <Close/>;
     case 'error': return <Error/>;
@@ -29,17 +30,28 @@ const iconPicker = (icon: string) => {
   }
 };
 
-export const IconButton: React.FC<IconButtonProps> = ({ icon, variant, onclick }) => {
+const colors = {
+  white: `${styles.white}`,
+  pink: `${styles.pink}`,
+  green: `${styles.green}`,
+  orange: `${styles.orange}`
+}
+
+const fontColor = (color: string): string => {  
+  const { white, pink, green, orange } = colors;
+  switch (color) {
+    case 'white': return white;
+    case 'pink': return pink;
+    case 'green': return green;
+    case 'orange': return orange;
+    default: return '';
+  }
+}
+
+export const IconButton: React.FC<IconButtonProps> = ({ icon, variant, onclick, color }) => {
   return (
     <Button
-      className=
-        {
-          variant === 'geraldine' 
-          ? 
-          `${styles.btn_icon} ${styles.icon}`
-          :
-          `${styles.btn_icon}`
-        }
+      className={`${styles.icon} ${fontColor(color)}`}
       variant={variant}
       onclick={onclick}
     >
