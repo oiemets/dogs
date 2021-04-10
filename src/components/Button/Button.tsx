@@ -1,34 +1,36 @@
 import styles from './Button.module.css';
+import classNames from 'classnames/bind';
 
 export interface ButtonProps {
-  variant: string;
-  onclick: (e: React.SyntheticEvent) => void;
+  variant?: 'white' | 'satin' | 'geraldine' | 'whiteDark' | 'satinDark' | 'gray';
+  onClick?: (e: React.SyntheticEvent) => void;
   className?: string;
 }
 
-const btnVariant= {
-  white: `${styles.btn} ${styles.btn_white}`,
-  satin: `${styles.btn} ${styles.btn_satin}`,
-  geraldine: `${styles.btn} ${styles.btn_geraldine}`
+const styleNames = classNames.bind(styles);
+
+const btnVariant = {
+  white: styleNames('btn', 'white'),
+  satin: styleNames('btn', 'satin'),
+  geraldine: styleNames('btn', 'geraldine'),
+  whiteDark: styleNames(),
+  satinDark: styleNames(),
+  gray: styleNames(),
 };
 
-const btnTheme = (variant: string): string => {
-  const { white, satin, geraldine } = btnVariant;
-  switch(variant) {
-    case 'white': return white;
-    case 'satin': return satin;
-    case 'geraldine': return geraldine;
-    default: return '';
-  }
-};
-
-export const Button: React.FC<ButtonProps> = ({ children, onclick, variant, className }) => {
-  return (
-    <button 
-      className={className ? `${className} ${btnTheme(variant)}` : btnTheme(variant)}
-      onClick={onclick}
-    >
-        {children}
-    </button>
+export const Button: React.FC<ButtonProps> = ({ 
+  children, 
+  onClick, 
+  variant = 'white', 
+  className 
+  }) => {
+    const theme = btnVariant[variant];
+    return (
+      <button 
+        className={className ? className : theme}
+        onClick={onClick}
+      >
+          {children}
+      </button>
   );
 }

@@ -1,51 +1,30 @@
 .btn {
   border: none;
-  /* margin: 0;
-  padding: 0;
-  width: auto;
-  overflow: visible; */
- 
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 10px 30px;
   border-radius: 10px;
-  width: 138px;
-  height: 36px;
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
+  font: normal 500 12px/16px 'Jost';
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #FF868E;
+  outline: none;
 }
 
-.btn_white {
+.white {
+  color: #FF868E;
   background-color: #FFFFFF;
 }
 
-.btn_white path {
-  fill: #FF868E;
-}
-
-.btn_satin {
+.satin {
+  color: #FF868E;
   background-color: #FBE0DC;
 }
 
-.btn_satin path {
-  fill: #FF868E;
-}
-
-.btn_geraldine {
+.geraldine {
   color: #FFFFFF; 
   background-color: #FF868E;
 }
-
-.btn_geraldine path {
-  fill: #ffffff;
-}
-
-
-
 
 .btn:hover {
   cursor: pointer;
@@ -56,4 +35,3 @@
   color: #ffffff;
   background-color: #FF868E;
 }
-

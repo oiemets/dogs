@@ -3,7 +3,7 @@ export { ReactComponent as ArrowLeft } from './arrow_left.svg';
 export { ReactComponent as Close } from './close.svg';
 export { ReactComponent as Error } from './error.svg';
 export { ReactComponent as HeartFilled } from './heart_filled.svg';
-export { ReactComponent as Heart } from './smile.svg';
+export { ReactComponent as Heart } from './heart.svg';
 export { ReactComponent as MagnifyingGlass } from './magnifying_glass.svg';
 export { ReactComponent as OrderDown } from './order_down.svg';
 export { ReactComponent as OrderUp } from './order_up.svg';

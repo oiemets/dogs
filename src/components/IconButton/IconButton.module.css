@@ -1,24 +1,122 @@
 .icon {
   margin: 0;
-  padding: 0;
-  overflow: visible;
+  border: none;
+  display: inline-block;
+  outline: none;
+}
+
+.icon svg {
+  display: block;
+}
+
+.icon path {
+  fill: currentColor;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+
+
+.white {
+  color: #FF868E;
+  background-color: #FFFFFF;
+}
+
+.white:hover {
+  background-color: #FBE0DC;
+}
+
+.white:active {
+  background-color: #FF868E;
+}
+
+.white svg:active {
+  color: #FFFFFF;
+}
+
+
+
+
+.whiteDark {
+  color: #FF868E;
+  background-color: #FFFFFF;
+}
+
+.whiteDark:hover {
+  color: #FFFFFF;
+  background-color: #FF868E;
+}
+
+
+.satin {
+  color: #FF868E;
+  background-color: #FBE0DC;
+}
+
+.satinDark {
+  color: #FF868E;
+  background-color: #FBE0DC;
+}
+
+.satinDark:hover {
+  color: #FFFFFF;
+  background-color: #FF868E;
+}
+
+
+
+.geraldine {
+  color: #FFFFFF; 
+  background-color: #FF868E;
+}
+
+.geraldine svg {
+  color: #FFFFFF;
+}
+
+
+
+
+.gray {
+  color: #8C8C8C;
+  background-color: #F8F8F7;
+  border: 2px solid transparent;
+}
+
+.gray:hover {
+  color: #FF868E;
+  border: 2px solid #FBE0DC;
+}
+
+
+.S {
+  padding: 10px;
   border-radius: 20px;
-  width: 60px;
-  height: 60px;
 }
 
-.white path {
-  fill: #ffffff;
+.S svg {
+  width: 32px;
+  height: 32px;
 }
 
-.pink path {
-  fill: #FF868E;
+.M {
+  padding: 20px;
+  border-radius: 40px;
 }
 
-.green path {
-  fill: #97EAB9;
+.M svg {
+  width: 64px;
+  height: 64px;
 }
 
-.orange path {
-  fill: #FFD280;
+.L {
+  padding: 30px;
+  border-radius: 45px;
+}
+
+.L svg {
+  width: 86px;
+  height: 86px;
 }
