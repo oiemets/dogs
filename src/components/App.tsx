@@ -57,13 +57,16 @@ function App() {
 
         <div style={{backgroundColor: 'grey', padding: '20px'}}>
           <Button>voting</Button>
+
+          <Button variant='gray'>gray</Button>
+          <Button variant='whiteDark'>white dark</Button>
           
           <IconButton icon='smile' />
           <IconButton icon='heart'/>
           <IconButton icon='sad' />
 
-          <IconButton icon='arrowLeft' variant='satinDark'/>
-          <IconButton icon='magnifyingGlass' variant='satinDark' />
+          <IconButton icon='arrowLeft' variant='satin' />
+          <IconButton icon='magnifyingGlass' variant='satin' />
           <IconButton icon='close' variant='whiteDark'/>
           <IconButton icon='heart' variant='whiteDark'/>
           <IconButton icon='heartFilled' variant='whiteDark'/>

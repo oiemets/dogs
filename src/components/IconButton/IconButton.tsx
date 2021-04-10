@@ -45,7 +45,6 @@ const iconVariant = {
   white: styleNames('icon', 'white'),
   whiteDark: styleNames('icon', 'whiteDark'),
   satin: styleNames('icon', 'satin'),
-  satinDark: styleNames('icon', 'satinDark'),
   geraldine: styleNames('icon', 'geraldine'),
   gray: styleNames('icon', 'gray')
 };

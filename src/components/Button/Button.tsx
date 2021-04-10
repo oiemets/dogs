@@ -2,7 +2,7 @@ import styles from './Button.module.css';
 import classNames from 'classnames/bind';
 
 export interface ButtonProps {
-  variant?: 'white' | 'satin' | 'geraldine' | 'whiteDark' | 'satinDark' | 'gray';
+  variant?: 'white' | 'satin' | 'geraldine' | 'whiteDark' | 'gray';
   onClick?: (e: React.SyntheticEvent) => void;
   className?: string;
 }
@@ -13,9 +13,8 @@ const btnVariant = {
   white: styleNames('btn', 'white'),
   satin: styleNames('btn', 'satin'),
   geraldine: styleNames('btn', 'geraldine'),
-  whiteDark: styleNames(),
-  satinDark: styleNames(),
-  gray: styleNames(),
+  whiteDark: styleNames('btn', 'whiteDark'),
+  gray: styleNames('btn', 'gray')
 };
 
 export const Button: React.FC<ButtonProps> = ({ 

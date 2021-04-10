@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 
-
+/*          W H I T E          */
 
 .white {
   color: #FF868E;
@@ -29,14 +29,12 @@
 }
 
 .white:active {
+  color: #FFFFFF;
   background-color: #FF868E;
 }
 
-.white svg:active {
-  color: #FFFFFF;
-}
 
-
+/*     W H I T E   D A R K      */
 
 
 .whiteDark {
@@ -50,21 +48,21 @@
 }
 
 
+/*        S A T I N         */
+
+
 .satin {
   color: #FF868E;
   background-color: #FBE0DC;
 }
 
-.satinDark {
-  color: #FF868E;
-  background-color: #FBE0DC;
-}
-
-.satinDark:hover {
+.satin:hover {
   color: #FFFFFF;
   background-color: #FF868E;
 }
 
+
+/*    G E R A L D I N E      */
 
 
 .geraldine {
@@ -72,11 +70,13 @@
   background-color: #FF868E;
 }
 
-.geraldine svg {
-  color: #FFFFFF;
+.geraldine:hover {
+  color: #FF868E;
+  background-color: #FBE0DC;
 }
 
 
+/*       G R A Y         */
 
 
 .gray {
@@ -90,6 +90,10 @@
   border: 2px solid #FBE0DC;
 }
 
+
+
+
+/*      S I Z E S      */
 
 .S {
   padding: 10px;
