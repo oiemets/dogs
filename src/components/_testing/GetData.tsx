@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useTypedSelector } from '../hooks/useTypedSelector';
-import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
 // import  Grid  from './Grid/Grid';
 
 const Test = () => {
