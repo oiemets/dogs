@@ -55,3 +55,12 @@ export type FavPostRequest = {
   image_id: string;
   sub_id?: string;
 }
+
+export type DeleteRequestPayload = {
+  favourite_id: string;
+}
+
+export type DeleteRequestConfig<T> = {
+  headers?: {[key: string]: string};
+  data: T;
+}
