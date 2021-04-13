@@ -1,8 +1,8 @@
 .icon {
   margin: 0;
-  border: none;
   display: inline-block;
   outline: none;
+  border: 2px solid transparent;
 }
 
 .icon svg {
@@ -16,81 +16,6 @@
 .icon:hover {
   cursor: pointer;
 }
-
-/*          W H I T E          */
-
-.white {
-  color: #FF868E;
-  background-color: #FFFFFF;
-}
-
-.white:hover {
-  background-color: #FBE0DC;
-}
-
-.white:active {
-  color: #FFFFFF;
-  background-color: #FF868E;
-}
-
-
-/*     W H I T E   D A R K      */
-
-
-.whiteDark {
-  color: #FF868E;
-  background-color: #FFFFFF;
-}
-
-.whiteDark:hover {
-  color: #FFFFFF;
-  background-color: #FF868E;
-}
-
-
-/*        S A T I N         */
-
-
-.satin {
-  color: #FF868E;
-  background-color: #FBE0DC;
-}
-
-.satin:hover {
-  color: #FFFFFF;
-  background-color: #FF868E;
-}
-
-
-/*    G E R A L D I N E      */
-
-
-.geraldine {
-  color: #FFFFFF; 
-  background-color: #FF868E;
-}
-
-.geraldine:hover {
-  color: #FF868E;
-  background-color: #FBE0DC;
-}
-
-
-/*       G R A Y         */
-
-
-.gray {
-  color: #8C8C8C;
-  background-color: #F8F8F7;
-  border: 2px solid transparent;
-}
-
-.gray:hover {
-  color: #FF868E;
-  border: 2px solid #FBE0DC;
-}
-
-
 
 
 /*      S I Z E S      */

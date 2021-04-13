@@ -21,15 +21,16 @@ export const Button: React.FC<ButtonProps> = ({
   children, 
   onClick, 
   variant = 'white', 
-  className 
+  className
   }) => {
-    const theme = btnVariant[variant];
+    const theme = styleNames(btnVariant[variant], className);
+    
     return (
       <button 
-        className={className ? className : theme}
+        className={theme}
         onClick={onClick}
       >
           {children}
       </button>
   );
-}
+};

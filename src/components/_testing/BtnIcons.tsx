@@ -11,20 +11,22 @@ export const BtnIcons: React.FC = () => {
     <div style={{backgroundColor: '#C7C7C7', padding: '20px'}}>
       <Button onClick={testBtnClick}>voting</Button>
 
-      <Button variant='gray'>gray</Button>
-      <Button variant='whiteDark'>white dark</Button>
+      <Button onClick={testBtnClick} variant='gray'>gray</Button>
+      <Button onClick={testBtnClick} variant='whiteDark'>white dark</Button>
+      <Button>test</Button>
       
-      <IconButton icon='smile' />
-      <IconButton icon='heart'/>
-      <IconButton icon='sad' />
+      <IconButton onClick={testBtnClick} icon='smile'/>
+      <IconButton onClick={testBtnClick} icon='heart'/>
+      <IconButton onClick={testBtnClick} icon='sad' color="green"/>
 
-      <IconButton icon='arrowLeft' variant='satin' />
-      <IconButton icon='magnifyingGlass' variant='satin' />
-      <IconButton icon='close' variant='whiteDark'/>
-      <IconButton icon='heart' variant='whiteDark'/>
-      <IconButton icon='heartFilled' variant='whiteDark'/>
-      <IconButton icon='orderUp' variant='gray'/>
-      <IconButton icon='orderDown' variant='gray'/>
+
+      <IconButton onClick={testBtnClick} icon='arrowLeft' variant='satin' />
+      <IconButton onClick={testBtnClick} icon='search' variant='satin' />
+      <IconButton onClick={testBtnClick} icon='close' variant='whiteDark'/>
+      <IconButton onClick={testBtnClick} icon='heart' variant='whiteDark'/>
+      <IconButton onClick={testBtnClick} icon='heartFilled' variant='whiteDark'/>
+      <IconButton onClick={testBtnClick} icon='orderUp' variant='gray'/>
+      <IconButton onClick={testBtnClick} icon='orderDown' variant='gray'/>
     </div>
   );
 }

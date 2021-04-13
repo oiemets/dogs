@@ -9,4 +9,5 @@ export * from './Dislikes';
 export * from './Upload';
 export * from './Breed';
 export * from './NotFound';
+export * from './Search';
 

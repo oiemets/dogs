@@ -1,5 +1,5 @@
 .btn {
-  border: 0;
+  border: none;
   display: flex;
   flex-flow: row nowrap;
   padding: 10px 30px;
@@ -8,12 +8,12 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  appearance: none; 
+  appearance: none;
   cursor: pointer;
 }
 
 
-/*          W H I T E          */
+/*  W H I T E  */
 
 .white {
   color: #FF868E;
@@ -33,7 +33,7 @@
   background-color: #FF868E;
 }
 
-/*     W H I T E   D A R K      */
+/*  W H I T E   D A R K   */
 
 .whiteDark {
   color: #FF868E;
@@ -50,8 +50,7 @@
 }
 
 
-/*        S A T I N         */
-
+/*  S A T I N  */
 
 .satin {
   color: #FF868E;
@@ -64,8 +63,7 @@
 }
 
 
-/*    G E R A L D I N E      */
-
+/*  G E R A L D I N E  */
 
 .geraldine {
   color: #FFFFFF; 
@@ -79,8 +77,7 @@
 
 
 
-/*       G R A Y         */
-
+/*  G R A Y  */
 
 .gray {
   color: #8C8C8C;
@@ -94,6 +91,5 @@
 
 .gray:hover {
   color: #FF868E;
-  background-color: #F8F8F7;
   border: 2px solid #FBE0DC;
 }

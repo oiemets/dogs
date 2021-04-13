@@ -9,13 +9,17 @@ import {
   Voting, Breeds, Gallery, 
   Home, Favourites, Likes, Dislikes, NotFound 
 } from './routing/index';
+import { Search } from './routing/Search';
 
 
 export const TestApp: React.FC = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   return (
     <>
-      <h4>{location.pathname}</h4>
+      <h4>{pathname}</h4>
+
+      <Search/>
+
       <Link to="/"/>
       <Link to="/voting"/>
       <Link to="/breeds"/>
@@ -32,7 +36,5 @@ export const TestApp: React.FC = () => {
         <Route component={NotFound}/>
       </Switch>
     </>
-
-
   );
-}
+};

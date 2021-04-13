@@ -1,12 +1,13 @@
-import styles from './IconButton.module.css';
 import { Button, ButtonProps } from '../Button/Button';
+import styles from './IconButton.module.css';
 import classNames from 'classnames/bind';
 import {
   Approved, ArrowLeft, Close, Error, 
-  Heart,  HeartFilled, MagnifyingGlass, 
+  Heart,  HeartFilled, Search, 
   OrderDown, OrderUp, Refresh, 
   Sad, Smile, Upload
 } from '../../assets';
+import styled from 'styled-components';
 
 const styleNames = classNames.bind(styles);
 
@@ -17,7 +18,7 @@ const iconsMap = {
   error: Error,
   heart: Heart,
   heartFilled: HeartFilled,
-  magnifyingGlass: MagnifyingGlass,
+  search: Search,
   orderDown: OrderDown,
   orderUp: OrderUp,
   refresh: Refresh,
@@ -41,32 +42,34 @@ interface IconButtonProps extends ButtonProps {
   size?: 'S' | 'M' | 'L';
 };
 
-const iconVariant = {
-  white: styleNames('icon', 'white'),
-  whiteDark: styleNames('icon', 'whiteDark'),
-  satin: styleNames('icon', 'satin'),
-  geraldine: styleNames('icon', 'geraldine'),
-  gray: styleNames('icon', 'gray')
-};
+const IconStyled = styled.span `
+  margin: 0,
+  display: inline-block,
+  outline: none,
+  padding: 10px,
+  borderRadius: '20px'
+`;
 
 export const IconButton: React.FC<IconButtonProps> = ({ 
   icon, 
   variant = 'white', 
-  color,
+  color = '',
   size = 'S',
-  className
+  className,
+  onClick
   }) => {
-    const theme = classNames(iconVariant[variant], styles[size]);
+    const theme = styleNames('icon', className, styles[size]);
+    const iconColor = colors[color] ?? color;
     const Icon = iconsMap[icon];
-    if(color && color === colors[color]) {
-      color = colors[color];
-    }
     return (
       <Button
-        className={className ? className : theme}
+        onClick={onClick}
+        className={theme}
         variant={variant}
       >
-        <Icon style={{color}}/>
+        <IconStyled>
+          <Icon style={{color: iconColor}}/>
+        </IconStyled>
       </Button>
     );
-}
+};

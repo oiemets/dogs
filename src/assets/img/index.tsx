@@ -4,7 +4,7 @@ export { ReactComponent as Close } from './close.svg';
 export { ReactComponent as Error } from './error.svg';
 export { ReactComponent as HeartFilled } from './heart_filled.svg';
 export { ReactComponent as Heart } from './heart.svg';
-export { ReactComponent as MagnifyingGlass } from './magnifying_glass.svg';
+export { ReactComponent as Search } from './search.svg';
 export { ReactComponent as OrderDown } from './order_down.svg';
 export { ReactComponent as OrderUp } from './order_up.svg';
 export { ReactComponent as Refresh } from './refresh.svg';
