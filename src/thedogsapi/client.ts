@@ -1,44 +1,44 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { Breed, BreedSearchResult, 
-        BreedsListQueryParams, FavListQueryParams, 
-        Favourite, FavPostRequest, DeleteRequestConfig,
-        DeleteRequestPayload
+        BreedsListQueryParams, Favourite,
+        FavouritesListQueryParams, FavouriteID, 
+        AddFavouritePayload, AddFavouriteResponse
 } from './types';
-
+import { toQueryParamsString } from './utils';
 
 export class TheDogsAPIClient {
+
   static readonly baseUrl = 'https://api.thedogapi.com/v1/';
   constructor(private key: string) {}
 
+  /** General */
   private authHeader = { headers: { 'x-api-key': this.key } };
-
-  private deleteReqConfig = (id: string): DeleteRequestConfig<DeleteRequestPayload> => ({...this.authHeader, data: { favourite_id: id }});
 
   private url = (chunk: string) => TheDogsAPIClient.baseUrl + chunk;
 
   private doGetRequest = async <T>(url: string) => (await axios.get<T>(url, this.authHeader)).data;
 
-  private doPostRequest = async <T>(url: string, payload: {[key: string]: string}) => (await axios.post<T>(url, payload, this.authHeader)).data;
+  private doPostRequest = async <T>(url: string, payload: Record<string, string>) => (await axios.post<T>(url, payload, this.authHeader)).data;
 
-  private doDeleteRequest = async <T>(url: string, config: DeleteRequestConfig<any>) => (await axios.delete<T>(url, config)).data;
+  private doDeleteRequest = async <T>(url: string, config: AxiosRequestConfig) => (await axios.delete<T>(url,  config)).data;
 
+
+  /** Breeds */
   private breedsList = (params: string) => 
     this.doGetRequest<Breed[]>(this.url(`breeds?${params}`));
 
   private breedsSearch = (query: string) => 
     this.doGetRequest<BreedSearchResult[]>(this.url(`breeds/search?q=${query}`));
 
-  private favList = (params: string) => 
-    this.doGetRequest<Favourite[]>(this.url(`favourites?${params}`));
+    
+  /** Favourites */
+  private favouritesList = (params: string) => this.doGetRequest<Favourite[]>(this.url(`favourites?${params}`));
 
-  private addFavourite = (payload: FavPostRequest) => 
-    this.doPostRequest<FavPostRequest[]>(this.url(`favourites`), payload);
+  private getFavourite = (id: FavouriteID) => this.doGetRequest<Favourite>(this.url(`favourites/${id}`));
 
-  private getFavourite = (id: string) => 
-    this.doGetRequest<Favourite>(this.url(`favourites/${id}`));
-
-  private deleteFavourite = (id: string) => 
-    this.doDeleteRequest(this.url(`favourites/${id}`), this.deleteReqConfig(id));
+  private addFavourite = (payload: AddFavouritePayload) => this.doPostRequest<AddFavouriteResponse>(this.url(`favourites`), payload);
+  
+  private deleteFavourite = (id: FavouriteID) => this.doDeleteRequest<Response>(this.url(`favourites/${id}`), this.authHeader);
 
 
   breeds = () => ({
@@ -48,10 +48,10 @@ export class TheDogsAPIClient {
   });
 
   favourites = () => ({
-    list: (params: FavListQueryParams = { sub_id: '' }) => this.favList(new URLSearchParams(params).toString()),
-    add: (payload: FavPostRequest) => this.addFavourite(payload),
-    get: (id: string) => this.getFavourite(id),
-    del: (id: string) => this.deleteFavourite(id)
+    list: (params?: FavouritesListQueryParams) => this.favouritesList(toQueryParamsString(params)),
+    getById: (id: FavouriteID) => this.getFavourite(id),
+    add: (payload: AddFavouritePayload) => this.addFavourite(payload),
+    delete: (id: FavouriteID) => this.deleteFavourite(id)
   });
 };
 

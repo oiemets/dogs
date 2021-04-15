@@ -19,17 +19,17 @@ type ListQueryParams = {
 }
 
 export type Breed = {
-  id: number,
-  name: string,
-  bred_for?: string,
-  breed_group?: string,
-  height?: Size,
-  image?: BreedImage,
-  life_span?: string,
-  reference_image_id?: string,
-  origin?: string,
-  temperament?: string,
-  weight?: Size
+  id: number;
+  name: string;
+  bred_for?: string;
+  breed_group?: string;
+  height?: Size;
+  image?: BreedImage;
+  life_span?: string;
+  reference_image_id?: string;
+  origin?: string;
+  temperament?: string;
+  weight?: Size;
 }
 
 export type BreedSearchResult = Omit<Breed, 'image'>
@@ -40,27 +40,25 @@ export type BreedsListQueryParams = ListQueryParams & {
 
 export type Favourite = {
   created_at: string;
-  id: string;
+  id: FavouriteID;
   image_id: string;
   image?: Image;
   sub_id?: string;
   user_id?: string;
 }
 
-export type FavListQueryParams = ListQueryParams & {
+export type FavouritesListQueryParams = ListQueryParams & {
   sub_id?: string;
 }
 
-export type FavPostRequest = {
+export type FavouriteID = number | string;
+
+export type AddFavouritePayload = {
   image_id: string;
   sub_id?: string;
 }
 
-export type DeleteRequestPayload = {
-  favourite_id: string;
-}
-
-export type DeleteRequestConfig<T> = {
-  headers?: {[key: string]: string};
-  data: T;
+export type AddFavouriteResponse = {
+  message: string;
+  id: string | number;
 }
