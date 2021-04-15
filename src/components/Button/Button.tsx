@@ -9,28 +9,19 @@ export interface ButtonProps {
 
 const styleNames = classNames.bind(styles);
 
-const btnVariant = {
-  white: styleNames('btn', 'white'),
-  satin: styleNames('btn', 'satin'),
-  geraldine: styleNames('btn', 'geraldine'),
-  whiteDark: styleNames('btn', 'whiteDark'),
-  gray: styleNames('btn', 'gray')
-};
-
 export const Button: React.FC<ButtonProps> = ({ 
   children, 
   onClick, 
   variant = 'white', 
   className
   }) => {
-    const theme = styleNames(btnVariant[variant], className);
-    
+    const theme = styleNames('btn', variant, className);
     return (
       <button 
         className={theme}
         onClick={onClick}
       >
-          {children}
+        {children}
       </button>
   );
 };

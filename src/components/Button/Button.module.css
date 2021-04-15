@@ -12,16 +12,16 @@
   cursor: pointer;
 }
 
+.btn:focus {
+  outline: none;
+}
+
 
 /*  W H I T E  */
 
 .white {
   color: #FF868E;
   background-color: #FFFFFF;
-}
-
-.white:focus {
-  outline: none;
 }
 
 .white:hover {
@@ -38,10 +38,6 @@
 .whiteDark {
   color: #FF868E;
   background-color: #FFFFFF;
-}
-
-.whiteDark:focus {
-  outline: none;
 }
 
 .whiteDark:hover {
@@ -76,17 +72,12 @@
 }
 
 
-
 /*  G R A Y  */
 
 .gray {
   color: #8C8C8C;
   background-color: #F8F8F7;
   border: 2px solid transparent;
-}
-
-.gray:focus {
-  outline: none;
 }
 
 .gray:hover {

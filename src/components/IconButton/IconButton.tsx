@@ -7,9 +7,16 @@ import {
   OrderDown, OrderUp, Refresh, 
   Sad, Smile, Upload
 } from '../../assets';
-import styled from 'styled-components';
 
-const styleNames = classNames.bind(styles);
+type IconButtonProps = ButtonProps & {
+  icon: keyof typeof iconsMap;
+  color?: keyof typeof colors;
+  size?: 'S' | 'M' | 'L';
+};
+
+type Color = 'white' | 'pink' | 'green' | 'orange' | string;
+
+const styleClasses = classNames.bind(styles);
 
 const iconsMap = {
   approved: Approved,
@@ -27,28 +34,12 @@ const iconsMap = {
   upload: Upload
 };
 
-type Color = 'white' | 'pink' | 'green' | 'orange' | string;
-
 const colors: Record<Color, string> = {
   white: '#FFFFFF',
   pink: '#FF868E',
   green: '#97EAB9', 
   orange: '#FFD280'
 };
-
-interface IconButtonProps extends ButtonProps {
-  icon: keyof typeof iconsMap;
-  color?: keyof typeof colors;
-  size?: 'S' | 'M' | 'L';
-};
-
-const IconStyled = styled.span `
-  margin: 0,
-  display: inline-block,
-  outline: none,
-  padding: 10px,
-  borderRadius: '20px'
-`;
 
 export const IconButton: React.FC<IconButtonProps> = ({ 
   icon, 
@@ -58,7 +49,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   className,
   onClick
   }) => {
-    const theme = styleNames('icon', className, styles[size]);
+    const theme = styleClasses('icon', className, size);
     const iconColor = colors[color] ?? color;
     const Icon = iconsMap[icon];
     return (
@@ -67,9 +58,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
         className={theme}
         variant={variant}
       >
-        <IconStyled>
-          <Icon style={{color: iconColor}}/>
-        </IconStyled>
+        <Icon style={{color: iconColor}}/>
       </Button>
     );
 };
