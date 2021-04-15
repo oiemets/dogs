@@ -11,7 +11,7 @@ const client = new TheDogsAPIClient('b06400d4-45bc-4191-b373-f3ab932ced26');
 (async () => {
   // const result = await client.favourites().list()
 
-  console.log('huy');
+  // console.log(result);
 
   
 })();

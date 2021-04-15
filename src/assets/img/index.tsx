@@ -11,3 +11,6 @@ export { ReactComponent as Refresh } from './refresh.svg';
 export { ReactComponent as Sad } from './sad.svg';
 export { ReactComponent as Smile } from './smile.svg';
 export { ReactComponent as Upload } from './upload.svg';
+export { ReactComponent as ImagesSearch } from './images-search.svg';
+export { ReactComponent as PetBreeds } from './pet-breeds.svg';
+export { ReactComponent as VoteTable } from './vote-table.svg';

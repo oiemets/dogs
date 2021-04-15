@@ -1,32 +1,46 @@
 import React from 'react';
 import { Button } from '../Button/Button';
 import { IconButton } from '../IconButton/IconButton';
+import { ButtonLabel } from '../ButtonLabel/ButtonLabel';
+import { IconFrame } from '../IconFrame/IconFrame';
+import { ImagesSearch, PetBreeds, VoteTable } from '../../assets';
+// import styles from './test.module.css';
 
-const testBtnClick = (e: React.SyntheticEvent): void => {
-  console.log('clicked');
-};
+// const testBtnClick = (e: React.SyntheticEvent): void => {
+//   console.log('clicked');
+// };
 
 export const BtnIcons: React.FC = () => {
   return (
     <div style={{backgroundColor: '#C7C7C7', padding: '20px'}}>
-      <Button onClick={testBtnClick}>voting</Button>
 
-      {/* <Button onClick={testBtnClick} variant='gray'>gray</Button> */}
-      {/* <Button onClick={testBtnClick} variant='whiteDark'>white dark</Button> */}
-      {/* <Button>test</Button> */}
       
-      {/* <IconButton onClick={testBtnClick} icon='smile' /> */}
-      {/* <IconButton onClick={testBtnClick} icon='heart'/> */}
-      {/* <IconButton onClick={testBtnClick} icon='sad' color="green"/> */}
 
+      
+      <Button>voting</Button>
+      <Button variant='satin'>upload photo</Button>
 
-      <IconButton onClick={testBtnClick} icon='arrowLeft' variant='satin'/>
-      <IconButton onClick={testBtnClick} icon='search' variant='satin' />
-      <IconButton onClick={testBtnClick} icon='close' variant='whiteDark'/>
-      <IconButton onClick={testBtnClick} icon='heart' variant='whiteDark'/>
-      <IconButton onClick={testBtnClick} icon='heartFilled' variant='whiteDark'/>
-      <IconButton onClick={testBtnClick} icon='orderUp' variant='gray'/>
-      <IconButton onClick={testBtnClick} icon='orderDown' variant='gray'/>
+      <IconButton icon='heart'/>
+      <IconButton icon='arrowLeft'/>
+      <IconButton icon='error'/>
+      <IconButton icon='heartFilled'/>
+
+      <IconButton icon='orderDown' variant='gray'/>
+      <IconButton icon='orderUp' variant='gray'/>
+
+      <ButtonLabel variant='purpleBlue'>
+        <PetBreeds/>
+      </ButtonLabel>
+
+      <ButtonLabel variant='purpleBlue'>
+        <VoteTable/>
+      </ButtonLabel>
+
+      <ButtonLabel variant='purpleBlue'>
+        <ImagesSearch/>
+      </ButtonLabel>
+      
+
     </div>
   );
 }

@@ -2,11 +2,10 @@
   margin: 0;
   display: inline-block;
   outline: none;
-  border: 2px solid transparent;
 }
 
 .icon svg {
-  display: block;
+  display: inline-block;
 }
 
 .icon path {
@@ -20,8 +19,11 @@
 
 /*   S I Z E S   */
 
-.S {
+.S span {
   padding: 10px;
+}
+
+.S {
   border-radius: 20px;
 }
 
@@ -40,8 +42,11 @@
   height: 64px;
 }
 
-.L {
+.L span {
   padding: 30px;
+}
+
+.L {
   border-radius: 45px;
 }
 

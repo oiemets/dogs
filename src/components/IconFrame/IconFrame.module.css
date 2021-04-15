@@ -1,0 +1,8 @@
+.frame {
+  display: inline-block;
+  border: 1px solid purple;
+}
+
+.icon:nth-child(1) {
+  margin-bottom: 10px;
+}

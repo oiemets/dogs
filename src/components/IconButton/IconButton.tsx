@@ -49,7 +49,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   className,
   onClick
   }) => {
-    const theme = styleClasses('icon', className, size);
+    const theme = styleClasses(className, 'icon', size);
     const iconColor = colors[color] ?? color;
     const Icon = iconsMap[icon];
     return (
