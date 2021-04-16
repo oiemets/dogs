@@ -1,9 +1,11 @@
 .btn {
+  display: flex;
   appearance: none;
   cursor: pointer;
   padding: 0;
   border: none;
   border-radius: 10px;
+  height: fit-content;
 }
 
 .btn:focus {

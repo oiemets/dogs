@@ -1,4 +1,5 @@
 .frame {
+  /* border: 1px solid purple; */
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -28,3 +29,6 @@
   color: #ffffff;
   background-color: #FF868E;
 }
+
+
+
