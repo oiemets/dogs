@@ -9,6 +9,11 @@
   background: none;
 }
 
+.label {
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
 .btn:focus {
   outline: none;
 }

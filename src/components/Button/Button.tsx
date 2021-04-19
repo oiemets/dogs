@@ -11,6 +11,7 @@ const styleNames = classNames.bind(styles);
 
 export const Button: React.FC<ButtonProps> = ({ 
   onClick,
+  labelClassName = styleNames('label'),
   ...props 
 }) => {
     const theme = styleNames('btn');
@@ -19,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
         className={theme}
         onClick={onClick}
       >
-        <ButtonLabel {...props}/>
+        <ButtonLabel {...props} labelClassName={labelClassName}/>
       </button>
   );
 };

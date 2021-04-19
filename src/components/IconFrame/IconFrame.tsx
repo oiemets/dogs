@@ -30,15 +30,14 @@ export const IconFrame: React.FC<IconFrameProps> = ({
   return (
     <Link
       to={urlsMap[target]}
-      className={styleClasses('frame')}
+      className={styleClasses('labelRoot', { activeLabelRoot: active })} 
     >
       <ButtonLabel
         beforeLabel={
           <span 
-            className={styleClasses('icon', target, {iconActive: active})}
+            className={styleClasses('icon', target, { iconActive: active })}
           />
         }
-        className={styleClasses('labelRoot', { activeLabelRoot: active })}
         labelClassName={styleClasses('label')}
         active={active}
       >

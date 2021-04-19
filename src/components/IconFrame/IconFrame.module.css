@@ -1,7 +1,13 @@
-.frame {
+.labelRoot {
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
+  width: max-content;
+  margin-right: 16px;
+}
+
+.activeLabelRoot{
+  pointer-events: none;
 }
 
 .icon {
@@ -13,17 +19,11 @@
   border-radius: 20px;
 }
 
-.labelRoot {
-  margin-right: 16px;
-}
-
-.activeLableRoot {
-  pointer-events: none;
-}
-
 .label {
-  margin-top: 10px;
   display: block;
+  padding: 10px 30px;
+  margin-top: 10px;
+  border-radius: 10px;
   box-sizing: border-box;
 }
 
@@ -37,28 +37,28 @@
 }
 
 .icon.voting {
-  background: #B4B7FF center/contain url('../../assets/images/voting.png') no-repeat;
+  background: #B4B7FF center/contain url('./voting.png') no-repeat;
 }
 
 .icon.breeds {
-  background: #97EAB9 center/contain url('../../assets/images/breeds.png') no-repeat;
+  background: #97EAB9 center/contain url('./breeds.png') no-repeat;
 }
 
 .icon.gallery {
-  background: #FFD280 center/contain url('../../assets/images/gallery.png') no-repeat;
+  background: #FFD280 center/contain url('./gallery.png') no-repeat;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), 
 (min-resolution: 192dpi) {
   .icon.voting {
-    background-image: url('../../assets/images/voting@2x.png');
+    background-image: url('./voting@2x.png');
   }      
 
   .icon.breeds {
-    background-image: url('../../assets/images/breeds@2x.png');
+    background-image: url('./breeds@2x.png');
   }      
 
   .icon.gallery {
-    background-image: url('../../assets/images/gallery@2x.png');
+    background-image: url('./gallery@2x.png');
   }  
 }

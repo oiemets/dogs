@@ -5,9 +5,14 @@
   flex-flow: row nowrap;
   width: max-content;
   border-radius: 20px;
+  overflow: hidden;
 }
 
-.container .isFavorited {
+.label {
+  border-radius: initial;
+}
+
+.isFavorited {
   color: #FF868E;
   background-color: rgba(255, 134, 142, 0.3);
 }
@@ -15,7 +20,6 @@
 .like {
   color: #FFFFFF;
   background-color: #97EAB9;
-  border-radius: 20px 0 0 20px;
 }
 
 .container .like:hover {
@@ -26,7 +30,6 @@
 .favourite {
   color: white;
   background-color: #FF868E;
-  border-radius: 0;
 }
 
 .container .favourite:hover {
@@ -37,7 +40,6 @@
 .dislike {
   color: white;
   background-color: #FFD280;
-  border-radius: 0 20px 20px 0;
 }
 
 .container .dislike:hover {

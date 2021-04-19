@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
 
-.container {
+.root {
   width: 95%;
   margin: 0 auto;
   background-color: rgb(245, 245, 245);

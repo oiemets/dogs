@@ -17,20 +17,18 @@ export const ImageWithSocialActions: React.FC<ImageWithSocialActionsProps> = ({
   onLikeChange
  }) => {
   return (
-    <div className={styleClasses('container')}>
-
-      <div className={styleClasses('imgContainer')}>
-        <img src={url} alt={url} className={styleClasses('img')}/>  
-      </div>  
-
-      <div className={styleClasses('actionsContainer')}>
-        <SocialActions 
-          isFavorited={isFavorited}
-          onFavourite={onFavourite}
-          onLikeChange={onLikeChange}
-        />
-      </div>
-      
+    <div className={styleClasses('root')}>
+      <img 
+        src={url} 
+        alt={url} 
+        className={styleClasses('img')}
+      />  
+      <SocialActions 
+        className={styleClasses('actions')}
+        isFavorited={isFavorited}
+        onFavourite={onFavourite}
+        onLikeChange={onLikeChange}
+      />
     </div>
   );
 };
