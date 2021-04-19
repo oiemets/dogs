@@ -49,13 +49,13 @@ export const IconButton: React.FC<IconButtonProps> = ({
   className,
   onClick
   }) => {
-    const theme = styleClasses(className, 'icon', size);
+    const theme = styleClasses('icon', size, className);
     const iconColor = colors[color] ?? color;
     const Icon = iconsMap[icon];
     return (
       <Button
         onClick={onClick}
-        className={theme}
+        labelClassName={theme}
         variant={variant}
       >
         <Icon style={{color: iconColor}}/>

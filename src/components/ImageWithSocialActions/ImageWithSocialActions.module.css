@@ -1,0 +1,21 @@
+.container {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: max-content 50px 43px;
+  width: max-content;
+}
+
+.imgContainer {
+  grid-column-start: 1;
+  grid-row-start: 1; grid-row-end: 3;
+}
+
+.img {
+  border-radius: 20px;
+}
+
+.actionsContainer {
+  margin: 0 auto;
+  grid-column-start: 1;
+  grid-row-start: 2;
+}

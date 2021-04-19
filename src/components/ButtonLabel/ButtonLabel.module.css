@@ -1,4 +1,10 @@
+.root {
+  display: inline-block;
+  cursor: pointer;
+}
+
 .label {
+  display: block;
   padding: 10px 30px;
   border-radius: 10px;
   font: normal 500 12px/16px 'Jost';
@@ -15,15 +21,16 @@
   background-color: #FFFFFF;
 }
 
-.white:focus {
+.root:focus .white {
   outline: none;
 }
 
-.white:hover {
+.root:hover .white {
   background-color: #FBE0DC;
 }
 
-.white:active {
+.root:active .white,
+.active {
   color: #ffffff;
   background-color: #FF868E;
 }
@@ -35,11 +42,11 @@
   background-color: #FFFFFF;
 }
 
-.whiteDark:focus {
+.root:focus .whiteDark {
   outline: none;
 }
 
-.whiteDark:hover {
+.root:hover .whiteDark {
   color: #FFFFFF;
   background-color: #FF868E;
 }
@@ -52,11 +59,10 @@
   background-color: #FBE0DC;
 }
 
-.satin:hover {
+.root:hover .satin {
   color: #FFFFFF;
   background-color: #FF868E;;
 }
-
 
 /*  G E R A L D I N E  */
 
@@ -65,7 +71,7 @@
   background-color: #FF868E;
 }
 
-.geraldine:hover {
+.root:hover .geraldine {
   color: #FF868E;
   background-color: #FBE0DC;
 }
@@ -79,34 +85,11 @@
   background-color: #F8F8F7;
 }
 
-.gray:focus {
+.root:focus .gray {
   outline: none;
 }
 
-.gray:hover {
+.root:hover .gray {
   color: #FF868E;
   border: 2px solid #FBE0DC;
-}
-
-/* P U R P L E    B L U E */
-
-.purpleBlue {
-  background-color: #B4B7FF;
-  border: 4px solid rgba(255, 255, 255, 0.6);
-  min-height: 198px;
-  min-width: 138px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-}
-
-.purpleBlue:hover {
-  border-color: #FFFFFF;
-  cursor: pointer;
-}
-
-.purpleBlue:active {
-  border-color: #FBE0DC;
 }

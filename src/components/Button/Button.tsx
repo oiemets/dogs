@@ -13,7 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   ...props 
 }) => {
-    const theme = styleNames(props.className, 'btn');
+    const theme = styleNames('btn');
     return (
       <button 
         className={theme}
