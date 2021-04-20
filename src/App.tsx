@@ -1,22 +1,23 @@
+import { useEffect } from 'react';
 import './App.css';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import { Home, Voting, Breeds, Gallery, Favourites, Likes, Dislikes, NotFound } from './pages';
-import { TheDogsAPIClient } from './thedogsapi';
 import { IconFrame, ImageWithSocialActions } from './components';
+import { useAppDispatch } from './state';
+import { loadBreeds } from './state/actions';
 
 import photo from './assets/images/photo.jpeg';
 import photo1 from './assets/images/photo1.jpg';
 
-const client = new TheDogsAPIClient('b06400d4-45bc-4191-b373-f3ab932ced26');
-
-(async () => {
-  // const result = await client.favourites().list()
-
-  // console.log(result);
-})();
 
 function App() {
   const { pathname } = useLocation();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadBreeds());
+  }, [dispatch])
+
   return (
     <div className='root'>
       <h4>{pathname}</h4>
