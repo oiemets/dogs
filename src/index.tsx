@@ -8,7 +8,7 @@ import { TheDogsAPIClient } from './thedogsapi';
 ReactDOM.render(
   <Router>
     <Provider store={createAppStore(
-      { breeds: [] },
+      {},
       { api: new TheDogsAPIClient('b06400d4-45bc-4191-b373-f3ab932ced26') }
     )}>
       <App />

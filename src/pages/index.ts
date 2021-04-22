@@ -1,4 +1,3 @@
-export * from './Breed/Breed';
 export * from './Breeds/Breeds';
 export * from './Dislikes/Dislikes';
 export * from './Favourites/Favourites';

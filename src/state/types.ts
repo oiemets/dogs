@@ -1,9 +1,11 @@
 import { ThunkAction } from 'redux-thunk';
 import { Breed, TheDogsAPIClient } from '../thedogsapi';
 import { Action } from './actions';
+import { Resource } from './resources';
+import { Selector } from 'reselect';
 
 export type AppState = {
-  breeds: Breed[];
+  breeds?: Resource<Breed[]>;
 }
 
 export type Services = {
@@ -23,4 +25,6 @@ export type AppCommand<T = void> = ThunkAction<
   AppState,
   Services,
   Action
->;
+>
+
+export type AppSelector<R> = Selector<AppState, R>

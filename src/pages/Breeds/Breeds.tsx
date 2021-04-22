@@ -1,19 +1,16 @@
 import React from 'react';
-import { 
-  Switch, 
-  Route,
-  useRouteMatch
-} from 'react-router-dom';
-import { Breed } from '../Breed/Breed'; 
-
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Breed } from './Breed'; 
+import { BreedsImages } from './BreedsImages';
 
 export const Breeds: React.FC = () => {
-  const match = useRouteMatch();
+  const { path } = useRouteMatch();
   return (
     <>
-      <h1>!breeds!</h1>
+      <h1>BREEDS</h1>
       <Switch>
-        <Route path={`${match.path}/:id`} component={Breed}/>
+        <Route exact path={path} component={BreedsImages}></Route>
+        <Route path={`${path}/:id`} component={Breed}/>
       </Switch>
     </>
   );
