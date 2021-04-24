@@ -10,7 +10,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(loadBreeds());
+    dispatch(loadBreeds('10'));
   }, [dispatch])
 
   return (

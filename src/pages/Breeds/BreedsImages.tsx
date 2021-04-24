@@ -21,14 +21,15 @@ export const BreedsImages: React.FC = () => {
   
   const renderBreedsImages = ({ id, img, name }: RenderBreedsProps) => 
     <Link to={`${path}/${id}`} key={id} className={classnames('link')}>
-      <ButtonLabel
+      {/* <ButtonLabel
         beforeLabel={
           <img src={img} alt='breed' className={classnames('img')}/>
         }
         className={classnames('root')}
         labelClassName={classnames('label')}
       >
-      </ButtonLabel>
+      </ButtonLabel> */}
+      <img src={img} alt='breed' className={classnames('img')}/>
       <Button className={classnames('btn')}>{name}</Button>
     </Link>
   
