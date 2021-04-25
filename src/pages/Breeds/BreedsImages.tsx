@@ -17,7 +17,6 @@ export const BreedsImages: React.FC = () => {
     dispatch(loadBreeds());
   }, [dispatch]);
 
-
   const { path } = useRouteMatch();
   const breeds = useTypedSelector(state => breedsData(state));
   const isLoading = !useTypedSelector(state => breedsReady(state));
@@ -42,7 +41,6 @@ export const BreedsImages: React.FC = () => {
 
 
 const getRenderItem = (path: string) => ({ id, name, image }: Breed) =>
-
   <Link
     to={`${path}/${id}`}
     className={styleNames('link')}

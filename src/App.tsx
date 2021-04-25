@@ -11,7 +11,6 @@ import {
   NotFound
 } from './pages';
 
-
 function App() {
   const { pathname } = useLocation();
   return (

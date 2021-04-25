@@ -62,3 +62,12 @@ export type AddFavouriteResponse = {
   message: string;
   id: string | number;
 }
+
+
+export type PublicImage = BreedImage & {
+  breeds: Omit<Breed, 'image'>[];
+}
+
+export type ImagesListQueryParams = ListQueryParams & {
+  breed_id: string;
+}

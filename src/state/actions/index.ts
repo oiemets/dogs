@@ -1,7 +1,11 @@
 import { BreedsLoadStart, BreedsLoadSuccess } from './breeds';
+import { ImagesLoadStart, ImagesLoadSuccess } from './images';
 
-export type Action = 
+export type Action =
   | BreedsLoadStart
-  | BreedsLoadSuccess;
+  | BreedsLoadSuccess
+  | ImagesLoadStart
+  | ImagesLoadSuccess;
 
 export * from './breeds';
+export * from './images';
