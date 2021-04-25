@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import { Breed } from './Breed'; 
+import { Breed } from './Breed';
 import { BreedsImages } from './BreedsImages';
 
 export const Breeds: React.FC = () => {
@@ -9,8 +9,14 @@ export const Breeds: React.FC = () => {
     <>
       <h1>BREEDS</h1>
       <Switch>
-        <Route exact path={path} component={BreedsImages}></Route>
-        <Route path={`${path}/:id`} component={Breed}/>
+        <Route
+          exact path={path}
+          component={BreedsImages}
+        />
+        <Route
+          path={`${path}/:id`}
+          component={Breed}
+        />
       </Switch>
     </>
   );

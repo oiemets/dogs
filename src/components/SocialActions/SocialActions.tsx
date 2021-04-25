@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SocialActions.module.css';
-import classNames from 'classnames/bind';
+import bindStyles from 'classnames/bind';
 import { IconButton } from '../IconButton/IconButton';
 
 export type SocialActionsProps = {
@@ -10,32 +10,32 @@ export type SocialActionsProps = {
   className?: string;
 }
 
-const styleClasses = classNames.bind(styles);
+const styleNames = bindStyles.bind(styles);
 
-export const SocialActions: React.FC<SocialActionsProps> = ({ 
-  onLikeChange, 
-  onFavourite, 
+export const SocialActions: React.FC<SocialActionsProps> = ({
+  onLikeChange,
+  onFavourite,
   isFavorited = false,
-  className 
+  className
 }) => {
   return (
-    <div className={styleClasses('container', className)}>
-      <IconButton 
-        onClick={onLikeChange} 
-        icon='smile' 
-        size='L' 
-        className={styleClasses('label', 'like')}
+    <div className={styleNames('container', className)}>
+      <IconButton
+        onClick={onLikeChange}
+        icon='smile'
+        size='L'
+        className={styleNames('label', 'like')}
       />
-      <IconButton 
+      <IconButton
         onClick={onFavourite}
-        icon={isFavorited ? 'heartFilled' : 'heart'} 
-        size='L' 
-        className={styleClasses('label', 'favourite')}/>
-      <IconButton 
-        onClick={onLikeChange} 
-        icon='sad' 
-        size='L' 
-        className={styleClasses('label', 'dislike')}
+        icon={isFavorited ? 'heartFilled' : 'heart'}
+        size='L'
+        className={styleNames('label', 'favourite')} />
+      <IconButton
+        onClick={onLikeChange}
+        icon='sad'
+        size='L'
+        className={styleNames('label', 'dislike')}
       />
     </div>
   );

@@ -29,6 +29,8 @@
 
 .labelRoot:hover .icon {
   border-color: #fff;
+  transition-timing-function: ease-in;
+  transition: 0.3s;
 }
 
 .labelRoot:active .icon,

@@ -12,6 +12,11 @@
   border: 2px solid transparent;
 }
 
+.labelRounded {
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
 /*  W H I T E  */
 
 .white {
@@ -25,6 +30,8 @@
 
 .root:hover .white {
   background-color: #FBE0DC;
+  transition-timing-function: ease-in;
+  transition: 0.3s;
 }
 
 .root:active .white,
@@ -47,6 +54,8 @@
 .root:hover .whiteDark {
   color: #FFFFFF;
   background-color: #FF868E;
+  transition-timing-function: ease-in;
+  transition: 0.3s;
 }
 
 
@@ -59,7 +68,9 @@
 
 .root:hover .satin {
   color: #FFFFFF;
-  background-color: #FF868E;;
+  background-color: #FF868E;
+  transition-timing-function: ease-in;
+  transition: 0.3s;
 }
 
 /*  G E R A L D I N E  */
@@ -72,6 +83,8 @@
 .root:hover .geraldine {
   color: #FF868E;
   background-color: #FBE0DC;
+  transition-timing-function: ease-in;
+  transition: 0.3s;
 }
 
 
@@ -90,4 +103,6 @@
 .root:hover .gray {
   color: #FF868E;
   border: 2px solid #FBE0DC;
+  transition-timing-function: ease-in;
+  transition: 0.3s;
 }
