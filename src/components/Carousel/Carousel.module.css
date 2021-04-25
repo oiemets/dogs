@@ -1,0 +1,18 @@
+.root {
+  width: 640px;
+  height: 360px;
+  display: block;
+}
+
+.wrapper {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.img {
+  display: block;
+	width: 640px;
+	height: 360px;
+	object-fit: cover;
+  object-position: center;
+}

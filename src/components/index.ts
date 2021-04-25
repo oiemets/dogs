@@ -6,5 +6,6 @@ export * from './IconFrame/IconFrame';
 export * from './Search/Search';
 export * from './SocialActions/SocialActions';
 export * from './ImageWithSocialActions/ImageWithSocialActions';
+export * from './Carousel/Carousel';
 
 

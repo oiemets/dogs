@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
 import { useAppDispatch, loadImages, getImages, imagesReady } from '../../state';
+import { Carousel } from '../../components';
 
 type Params = { id: string };
 
@@ -10,7 +11,7 @@ export const Breed: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(loadImages(id, '7'));
+    dispatch(loadImages(id, '5'));
   }, [dispatch, id]);
 
   const isLoading = !useTypedSelector(state => imagesReady(state));
@@ -22,7 +23,11 @@ export const Breed: React.FC = () => {
       {
         isLoading ?
           'images are loading...' :
-          images.map(i => <img src={i} alt={`${i} Breed`} key={i} />)
+          images.length === 0 ?
+            <span>no-image</span> :
+            <Carousel
+              images={images}
+            />
       }
     </>
   );
