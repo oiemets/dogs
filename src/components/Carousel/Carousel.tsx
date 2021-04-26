@@ -1,12 +1,12 @@
 import React from 'react';
 import { Carousel as ReactCarousel } from 'react-responsive-carousel';
-import './carouselStyles.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 import styles from './Carousel.module.css';
 import bindStyles from 'classnames/bind';
 
 type CarouselProps = {
   children?: React.ReactChild[];
-  images: string[];
+  images: { url: string, name: string }[];
 }
 
 const styleNames = bindStyles.bind(styles);
@@ -21,23 +21,19 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
       showThumbs={false}
       verticalSwipe='standard'
       autoFocus
-      showIndicators
+      showIndicators={images.length > 1}
       useKeyboardArrows
       dynamicHeight
+      infiniteLoop
     >
       {
-        images.map(i =>
-          <div className={styleNames('wrapper')}>
-            <img
-              key={i}
-              src={i}
-              alt={`${i} Breed`}
-              className={
-                styleNames('img')
-              }
-            />
-          </div>
-        )
+        images.map(({ url, name }, i) => (
+          <img
+            key={url}
+            src={url}
+            alt={`${name} pic #${i + 1}`}
+          />
+        ))
       }
     </ReactCarousel>
   );

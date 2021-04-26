@@ -4,15 +4,56 @@
   display: block;
 }
 
-.wrapper {
+.root :global(.carousel-slider) {
+  overflow: visible;
+}
+
+.root :global(.control-dots) {
+  margin: 0;
+  padding: 6px;
+  text-align: center;
+  width: 90px;
+  height: 30px;
   border-radius: 20px;
-  overflow: hidden;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: white;
+}
+
+.root :global(.slider-wrapper) {
+  border-radius: 20px;
+}
+
+@media (min-width: 960px) {
+  .root :global(.control-dots) {
+      bottom: -32px;
+  }
+}
+
+.root :global(.control-dots .dot) {
+  transition: opacity .25s ease-in;
+  background: rgba(251, 224, 220, 1);
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin: 0 2px;
+  outline: none;
+  list-style: none;
+  box-shadow: none;
+}
+
+.root :global(.control-dots .dot.selected),
+.root :global(.control-dots .dot:hover) {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  background: rgba(255, 134, 142, 1);
 }
 
 .img {
   display: block;
-	width: 640px;
-	height: 360px;
-	object-fit: cover;
+  width: 640px;
+  height: 360px;
+  object-fit: cover;
   object-position: center;
 }
