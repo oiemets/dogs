@@ -14,7 +14,7 @@ import {
 function App() {
   const { pathname } = useLocation();
   return (
-    <div className='root'>
+    <div className='app'>
       <h4>{pathname}</h4>
       <Switch>
         <Route exact path="/" component={Home} />

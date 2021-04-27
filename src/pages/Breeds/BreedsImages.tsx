@@ -7,6 +7,9 @@ import bindStyles from 'classnames/bind';
 import styles from './BreedsImages.module.css';
 import { Breed } from '../../thedogsapi';
 import { loadBreeds } from '../../state/actions';
+import pet from './PetPatchWhiteBg.png';
+
+export const PetPatch = <img src={pet} alt='no-pic' style={{ borderRadius: '20px' }} />;
 
 const styleNames = bindStyles.bind(styles);
 
@@ -53,7 +56,7 @@ const getRenderItem = (path: string) => ({ id, name, image }: Breed) =>
           alt={`${name} Breed`}
           className={styleNames('img')}
         /> :
-        <span>no-image</span>
+        PetPatch
     }
     <ButtonLabel
       labelClassName={styleNames('btn', roundedClassName)}

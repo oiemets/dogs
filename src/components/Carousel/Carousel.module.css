@@ -1,6 +1,6 @@
 .root {
-  width: 640px;
-  height: 360px;
+  max-width: 640px;
+  height: auto;
   display: block;
 }
 
@@ -22,12 +22,6 @@
 
 .root :global(.slider-wrapper) {
   border-radius: 20px;
-}
-
-@media (min-width: 960px) {
-  .root :global(.control-dots) {
-      bottom: -32px;
-  }
 }
 
 .root :global(.control-dots .dot) {
@@ -52,8 +46,8 @@
 
 .img {
   display: block;
-  width: 640px;
-  height: 360px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   object-position: center;
 }
