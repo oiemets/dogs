@@ -1,5 +1,6 @@
 .container {
   min-width: 320px;
+  margin-bottom: 20px;
 }
 
 .grid_container {
