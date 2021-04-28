@@ -1,12 +1,12 @@
 .container {
-  margin-bottom: 20px;
+  min-width: 320px;
 }
 
 .grid_container {
-  width: 640px;
-  height: 940px;
+  max-width: 640px;
+  max-height: 940px;
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "a b c"
     "a e e"
     "d e e"

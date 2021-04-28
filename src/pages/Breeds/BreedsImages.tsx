@@ -2,14 +2,11 @@ import React, { useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
 import { breedsData, breedsReady, useAppDispatch } from '../../state';
-import { Grid, ButtonLabel, roundedClassName } from '../../components';
+import { Grid, ButtonLabel, roundedClassName, NoImagePatch } from '../../components';
 import bindStyles from 'classnames/bind';
 import styles from './BreedsImages.module.css';
 import { Breed } from '../../thedogsapi';
 import { loadBreeds } from '../../state/actions';
-import pet from './PetPatchWhiteBg.png';
-
-export const PetPatch = <img src={pet} alt='no-pic' style={{ borderRadius: '20px' }} />;
 
 const styleNames = bindStyles.bind(styles);
 
@@ -24,7 +21,6 @@ export const BreedsImages: React.FC = () => {
   const breeds = useTypedSelector(state => breedsData(state));
   const isLoading = !useTypedSelector(state => breedsReady(state));
   const renderItem = getRenderItem(path);
-
 
   return (
     <div className={styleNames('grid')}>
@@ -42,7 +38,6 @@ export const BreedsImages: React.FC = () => {
   );
 };
 
-
 const getRenderItem = (path: string) => ({ id, name, image }: Breed) =>
   <Link
     to={`${path}/${id}`}
@@ -56,7 +51,7 @@ const getRenderItem = (path: string) => ({ id, name, image }: Breed) =>
           alt={`${name} Breed`}
           className={styleNames('img')}
         /> :
-        PetPatch
+        <NoImagePatch />
     }
     <ButtonLabel
       labelClassName={styleNames('btn', roundedClassName)}

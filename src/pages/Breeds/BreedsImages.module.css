@@ -1,5 +1,5 @@
 .grid {
-  width: 60%;
+  width: fit-content;
 }
 
 .link {
@@ -29,7 +29,6 @@
 
 .link:hover .btn {
 	display: inline-block;
-  /* background-color: #FBE0DC; */
 }
 
 .link:hover .img {

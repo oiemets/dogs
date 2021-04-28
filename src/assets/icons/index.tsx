@@ -11,3 +11,5 @@ export { ReactComponent as Refresh } from './refresh.svg';
 export { ReactComponent as Sad } from './sad.svg';
 export { ReactComponent as Smile } from './smile.svg';
 export { ReactComponent as Upload } from './upload.svg';
+export { ReactComponent as Logo } from './logo.svg';
+export { ReactComponent as Patch } from './patch.svg';

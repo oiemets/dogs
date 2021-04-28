@@ -7,5 +7,8 @@ export * from './Search/Search';
 export * from './SocialActions/SocialActions';
 export * from './ImageWithSocialActions/ImageWithSocialActions';
 export * from './Carousel/Carousel';
+export * from './GirlAndPet/GirlAndPet';
+export * from './Menu/Menu';
+export * from './NoImagePatch/NoImagePatch';
 
 

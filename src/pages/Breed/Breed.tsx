@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
-import { Carousel } from '../../components';
-import { PetPatch } from '../Breeds/BreedsImages';
+import { Carousel, NoImagePatch } from '../../components';
 import styles from './Breed.module.css';
 import bindStyles from 'classnames/bind';
 import {
@@ -40,11 +39,11 @@ export const Breed: React.FC = () => {
   } = useTypedSelector(state => getImagesBreedInfo(state));
 
   if (isLoading) {
-    return <>images are loading...</>
+    return <div style={{ width: 'fit-content' }}>images are loading...</div>
   }
 
   if (images.length === 0) {
-    return PetPatch
+    return <NoImagePatch />
   }
 
   return (
