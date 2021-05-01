@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
 import { breedsData, breedsReady, useAppDispatch } from '../../state';
-import { Grid, ButtonLabel, roundedClassName, NoImagePatch } from '../../components';
+import { Grid, ButtonLabel, roundedClassName } from '../../components';
 import bindStyles from 'classnames/bind';
 import styles from './BreedsImages.module.css';
 import { Breed } from '../../thedogsapi';
 import { loadBreeds } from '../../state/actions';
+import { Patch } from '../../assets';
 
 const styleNames = bindStyles.bind(styles);
 
@@ -51,7 +52,7 @@ const getRenderItem = (path: string) => ({ id, name, image }: Breed) =>
           alt={`${name} Breed`}
           className={styleNames('img')}
         /> :
-        <NoImagePatch />
+        <Patch />
     }
     <ButtonLabel
       labelClassName={styleNames('btn', roundedClassName)}

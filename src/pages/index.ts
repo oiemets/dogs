@@ -1,4 +1,5 @@
 export * from './Breeds/Breeds';
+export * from './Breed/Breed';
 export * from './Dislikes/Dislikes';
 export * from './Favourites/Favourites';
 export * from './Gallery/Gallery';

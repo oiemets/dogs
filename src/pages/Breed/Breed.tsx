@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
-import { Carousel, NoImagePatch } from '../../components';
+import { Carousel } from '../../components';
+import { Patch } from '../../assets';
 import styles from './Breed.module.css';
 import bindStyles from 'classnames/bind';
 import {
@@ -43,19 +44,18 @@ export const Breed: React.FC = () => {
   }
 
   if (images.length === 0) {
-    return <NoImagePatch />
+    return <Patch />
   }
 
   return (
-    <div
-      className={styleNames('root')}
-    >
+    <div className={styleNames('root')}>
+
       <div className={styleNames('nav')}>
         <IconButton
           icon='arrowLeft'
           variant='satin'
           onClick={historyGoBack}
-          className={styleNames('iconArrow')}
+          className={styleNames('icon')}
         />
         <Link
           to={'/breeds'}
@@ -88,69 +88,45 @@ export const Breed: React.FC = () => {
         <h2 className={styleNames('subtitle')}>
           {bred_for}
         </h2>
-        <dl
-          className={styleNames('descList')}
-        >
-          <div
-            className={styleNames('temperament')}
-          >
-            <div
-              className={styleNames('descListItem')}
-            >
-              <dt
-                className={styleNames('descTitle')}
-              >
+
+        <dl className={styleNames('list')}>
+
+          <div className={styleNames('left')}>
+            <div className={styleNames('listGroup')}>
+              <dt className={styleNames('listTitle')}>
                 temperament:
               </dt>
-              <dd
-                className={styleNames('descDetails')}
-              >
+              <dd className={styleNames('listDetails')}>
                 {temperament}
               </dd>
             </div>
           </div>
-          <div
-            className={styleNames('measurements')}
-          >
-            <div
-              className={styleNames('descListItem')}
-            >
-              <dt
-                className={styleNames('descTitle')}
-              >
+
+
+          <div className={styleNames('right')}>
+            <div className={styleNames('listGroup')}>
+              <dt className={styleNames('listTitle')}>
                 height:
               </dt>
-              <dd
-                className={styleNames('descDetails')}
-              >
+              <dd className={styleNames('listDetails')}>
                 {height?.metric}
               </dd>
             </div>
-            <div
-              className={styleNames('descListItem')}
-            >
-              <dt
-                className={styleNames('descTitle')}
-              >
+
+            <div className={styleNames('listGroup')}>
+              <dt className={styleNames('listTitle')}>
                 weight:
-            </dt>
-              <dd
-                className={styleNames('descDetails')}
-              >
+              </dt>
+              <dd className={styleNames('listDetails')}>
                 {weight?.metric}
               </dd>
             </div>
-            <div
-              className={styleNames('descListItem')}
-            >
-              <dt
-                className={styleNames('descTitle')}
-              >
+
+            <div className={styleNames('listGroup')}>
+              <dt className={styleNames('listTitle')}>
                 life span:
               </dt>
-              <dd
-                className={styleNames('descDetails')}
-              >
+              <dd className={styleNames('listDetails')}>
                 {life_span}
               </dd>
             </div>

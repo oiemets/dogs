@@ -18,14 +18,10 @@ const styleNames = bindStyles.bind(styles);
 function App() {
   return (
     <div className={styleNames('app')}>
-      <div
-        className={styleNames('menu')}
-      >
+      <div className={styleNames('left')}>
         <Menu />
       </div>
-      <div
-        className={styleNames('pages')}
-      >
+      <div className={styleNames('right')}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/voting" component={Voting} />
@@ -39,6 +35,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

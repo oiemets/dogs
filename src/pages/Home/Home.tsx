@@ -1,8 +1,11 @@
 import React from 'react';
-import { GirlAndPet } from '../../components';
+import styles from './Home.module.css';
+import bindStyles from 'classnames/bind';
+
+const styleNames = bindStyles.bind(styles);
 
 export const Home: React.FC = () => {
   return (
-    <GirlAndPet />
+    <div className={styleNames('bg')} />
   );
 };
