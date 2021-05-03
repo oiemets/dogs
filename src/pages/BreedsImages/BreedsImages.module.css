@@ -1,4 +1,56 @@
+.root {
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+
+
+/** navigation */
+
+.nav {
+  display: flex;
+}
+
+.icon {
+  border: none;
+  margin-right: 10px;
+}
+
+.linkBtn {
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.navBtn {
+  font-size: 20px;
+  font-weight: normal;
+  padding: 10px 30px;
+}
+
+.navRight {
+  display: flex;
+}
+
+.navRight > *:not(:last-child) {
+  margin-right: 10px;
+}
+
+.breedSelect {
+  margin-right: 20px;
+}
+
+.orderBtn {
+  padding: 8px;
+}
+
+
+/**  grid  */
+
 .grid {
+  margin-top: 25px;
   width: fit-content;
 }
 

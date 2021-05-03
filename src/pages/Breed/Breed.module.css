@@ -18,7 +18,7 @@
   margin-right: 10px;
 }
 
-.btnLink {
+.linkBtn {
   text-decoration: none;
   margin-right: 10px;
 }
@@ -97,7 +97,6 @@
   margin: 0;
   margin-right: 0.3em;
   display: inline-block;
-
 }
 
 .listDetails {

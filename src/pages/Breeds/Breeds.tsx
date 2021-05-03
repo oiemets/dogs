@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { Breed } from '../Breed/Breed';
-import { BreedsImages } from './BreedsImages';
+import { BreedsImages } from '../BreedsImages/BreedsImages';
 
 export const Breeds: React.FC = () => {
   const { path } = useRouteMatch();

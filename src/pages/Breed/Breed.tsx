@@ -59,7 +59,7 @@ export const Breed: React.FC = () => {
         />
         <Link
           to={'/breeds'}
-          className={styleNames('btnLink')}
+          className={styleNames('linkBtn')}
         >
           <Button
             variant='satin'
