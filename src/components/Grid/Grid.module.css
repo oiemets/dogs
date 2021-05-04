@@ -4,7 +4,6 @@
 }
 
 .grid_container {
-  max-width: 640px;
   max-height: 940px;
   display: grid;
   grid-template-areas:

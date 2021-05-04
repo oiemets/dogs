@@ -6,33 +6,30 @@ const styleNames = bindStyles.bind(styles);
 
 type SelectProps = {
   variant?: 'white' | 'gray';
-  option: { value: string, text: string }[];
+  option: Record<string, string>[];
   defaultOpt?: string;
   className?: string;
+  onChange?: (e: React.SyntheticEvent) => void;
 }
 
 export const Select: React.FC<SelectProps> = ({
   className,
   variant = 'gray',
   option,
-  defaultOpt
+  defaultOpt,
+  onChange
 }) => {
   return (
     <div className={styleNames('root', className, variant)}>
-      <select className={styleNames('select', `${variant}Select`)}>
-        {
-          defaultOpt ?
-            <option
-              value=""
-              className={styleNames('opt')}
-            >
-              {defaultOpt}
-            </option> :
-            null
-        }
+      <select
+        className={styleNames('select', `${variant}Select`)}
+        value={defaultOpt}
+        onChange={onChange}
+      >
         {
           option.map(o =>
             <option
+              key={o.value}
               value={o.value}
               className={styleNames('opt')}
             >
