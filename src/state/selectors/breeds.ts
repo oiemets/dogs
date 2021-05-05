@@ -34,11 +34,3 @@ export const setBreedsBackwards = createSelector(
   breeds => [...breeds.reverse()]
 );
 
-export const breedsSelectOptions = createSelector(
-  getBreedNames,
-  names => ['All breeds', ...names]
-    .map(name => ({
-      value: name,
-      text: name
-    }))
-);

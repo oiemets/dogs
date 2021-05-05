@@ -1,11 +1,11 @@
 .root {
+  display: flex;
   width: 100%;
   min-width: 100px;
   border-radius: 10px;
   border: 2px solid transparent;
   font: 400 16px/24px Jost;
   cursor: pointer;
-  align-items: center;
   background: url('./v.svg') right 10px top 50%/12px no-repeat;
 }
 
@@ -15,16 +15,18 @@
 
 .select {
   width: 100%;
+  text-overflow: ellipsis;
+  padding: 0 32px 0 10px;
   appearance: none;
   background-color: transparent;
   border: none;
-  padding: 6px;
   margin: 0;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   cursor: inherit;
   outline: none;
+  box-sizing: border-box;
 }
 
 
@@ -41,7 +43,7 @@
 
 
 .white {
-  background-color: #FFFFFF;
+  background-color: #fff;
 }
 
 .whiteSelect {

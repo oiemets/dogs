@@ -5,8 +5,7 @@ import {
   FavouritesListQueryParams, FavouriteID,
   AddFavouritePayload, AddFavouriteResponse, PublicImage, ImagesListQueryParams
 } from './types';
-import { toQueryParamsString } from './utils';
-
+import { toQueryParamsString } from '../utils';
 export class TheDogsAPIClient {
 
   static readonly baseUrl = 'https://api.thedogapi.com/v1/';

@@ -26,8 +26,8 @@ const iconsMap = {
   heart: Heart,
   heartFilled: HeartFilled,
   search: Search,
-  orderDown: OrderDown,
-  orderUp: OrderUp,
+  asc: OrderDown,
+  desc: OrderUp,
   refresh: Refresh,
   sad: Sad,
   smile: Smile,
@@ -47,6 +47,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   color = '',
   size = 'S',
   className,
+  active,
   onClick
 }) => {
   const theme = styleClasses('icon', size, className);
@@ -57,6 +58,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
       onClick={onClick}
       labelClassName={theme}
       variant={variant}
+      active={active}
     >
       <Icon style={{ color: iconColor }} />
     </Button>
