@@ -5,13 +5,14 @@ import styles from './Select.module.css';
 const styleNames = bindStyles.bind(styles);
 
 export type SelectValue = string | number;
+type SelectBreed = { value: SelectValue, text: string };
 
 type SelectProps = {
   variant?: 'white' | 'gray';
-  options: { value: SelectValue, text: string }[];
+  options: SelectBreed[];
   value?: SelectValue;
   className?: string;
-  onChange?: (value: SelectValue) => void;
+  onChange?: (value: SelectBreed) => void;
 }
 
 export const Select: React.FC<SelectProps> = ({
@@ -23,7 +24,7 @@ export const Select: React.FC<SelectProps> = ({
 }) => {
 
   const onSelectChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange?.(options.filter(option => String(option.value) === e.target.value)[0].value);
+    onChange?.(options.filter(option => String(option.value) === e.target.value)[0]);
   }, []);
 
   return (

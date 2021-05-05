@@ -22,15 +22,13 @@ export const ButtonLabel: React.FC<ButtonLabelProps> = ({
   beforeLabel = null,
   children
 }) => {
-  const activeStyle = `${variant}Active`;
   const theme = styleNames(
     'label',
     variant,
-    { activeStyle: active },
+    { active },
     labelClassName
   );
 
-  console.log(activeStyle);
 
   return (
     <span className={styleNames('root', className)}>

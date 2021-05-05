@@ -1,10 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link, useRouteMatch, useHistory } from 'react-router-dom';
+import {
+  Link,
+  useRouteMatch,
+  useHistory
+} from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
 import {
   breedsData,
   breedsReady,
-  getBreedNames,
+  getBreedNamesWithId,
   useAppDispatch
 } from '../../state';
 import {
@@ -13,8 +17,7 @@ import {
   roundedClassName,
   Select,
   IconButton,
-  Button,
-  SelectValue
+  Button
 } from '../../components';
 import bindStyles from 'classnames/bind';
 import styles from './BreedsImages.module.css';
@@ -29,38 +32,19 @@ const limitSelectOptions = [5, 10, 15, 20].map(n => ({
   text: `Limit: ${n}`
 }));
 
-const allBreeds = 'All Breeds';
+const allBreeds = {value: '', name: 'All breeds'};
 
 const breedsAscSorter = (a: Breed, b: Breed) => {
   const nameA = a.name.toUpperCase();
   const nameB = b.name.toUpperCase();
-
   if (nameA < nameB) {
     return -1;
   }
-
   if (nameA > nameB) {
     return 1;
   }
-
   return 0;
-}
-
-// const breedsDescSorter = () => breedsAscSorter.reverse()
-
-// {
-//   const r = breedsAscSorter(a, b);
-
-//   if (r > 0) {
-//     return r * -1;
-//   }
-
-//   if (r < 0) {
-//     return Math.abs(r);
-//   }
-
-//   return r;
-// }
+};
 
 type SortDirection = 'asc' | 'desc';
 
@@ -73,15 +57,11 @@ export const BreedsImages: React.FC = () => {
 
   const isLoading = !useTypedSelector(state => breedsReady(state));
   const rawBreeds = useTypedSelector(state => breedsData(state));
-  const breedNames = useTypedSelector(state => getBreedNames(state));
-  const [selectedBreed, setSelectedBreed] = useState(allBreeds);
+  const breedNames = useTypedSelector(state => getBreedNamesWithId(state));
+  const [selectedBreed, setSelectedBreed] = useState('');
   const [limit, setLimit] = useState(10);
   const [sort, setSort] = useState<SortDirection | undefined>();
 
-  /***
-   * WHY WE ARE NOT MAKING NEW REQUEST?
-   *
-  */
   const breeds = useMemo(
     () => {
       let result = [...rawBreeds];
@@ -90,26 +70,23 @@ export const BreedsImages: React.FC = () => {
         sort === 'asc' ?
           result.sort(breedsAscSorter) :
           result.sort(breedsAscSorter).reverse();
-        // result.sort(sort === 'asc' ? breedsAscSorter : breedsDescSorter)
       }
 
       result = result.splice(0, limit);
 
-      if (selectedBreed !== allBreeds) {
-        result = result.filter(({name}) => name === selectedBreed)
-      }
-
       return result;
     },
-    [rawBreeds, limit, sort, selectedBreed]
+    [rawBreeds, limit, sort]
   );
 
-  const onBreedNameChange = useCallback((name: SelectValue) => {
-    setSelectedBreed(String(name));
-  }, [setSelectedBreed, dispatch])
+  const onBreedNameChange = useCallback(({ value, text }) => {
+    setSelectedBreed(text);
+    history.push(`${path}/${value}`)
+  }, [history, path]);
 
-  const onLimitChange = useCallback((limit: SelectValue) => {
-    setLimit(Number(limit))
+
+  const onLimitChange = useCallback(({value}) => {
+    setLimit(Number(value))
   }, [setLimit]);
 
   const onSortChange = useCallback((sort: SortDirection) => {
@@ -136,6 +113,7 @@ export const BreedsImages: React.FC = () => {
           <Button
             variant='geraldine'
             labelClassName={styleNames('navBtn')}
+            active={path === '/breeds'}
           >
             breeds
           </Button>
@@ -144,7 +122,10 @@ export const BreedsImages: React.FC = () => {
           !isLoading ?
             <>
               <Select
-                options={[allBreeds, ...breedNames].map(name => ({value: name, text: name}))}
+                options={[allBreeds, ...breedNames].map(name => ({
+                  value: name.value,
+                  text: name.name
+                }))}
                 value={selectedBreed}
                 className={styleNames('breedSelect')}
                 onChange={onBreedNameChange}

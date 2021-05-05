@@ -39,7 +39,7 @@
   background-color: #ff868e;
 }
 
-.whiteActive {
+.white.active {
   color: #ffffff;
   background-color: #ff868e;
 }
@@ -76,6 +76,16 @@
   transition: 0.3s;
 }
 
+.satin.active {
+  cursor: default;
+}
+
+.satin.active:hover {
+  cursor: default;
+  color: #ff868e;
+  background-color: #fbe0dc;
+}
+
 /*  G E R A L D I N E  */
 
 .geraldine {
@@ -88,6 +98,12 @@
   background-color: #fbe0dc;
   transition-timing-function: ease-in;
   transition: 0.3s;
+}
+
+.root:hover .geraldine.active {
+  cursor: default;
+  color: #ffffff;
+  background-color: #ff868e;
 }
 
 /*  G R A Y  */
@@ -115,9 +131,14 @@
   transition: 0.3s;
 }
 
-.grayActive {
+.gray.active {
   color: #ff868e;
   border: 2px solid #fbe0dc;
   transition-timing-function: ease-in;
   transition: 0.3s;
+}
+
+.gray.active:hover {
+  cursor: default;
+  pointer-events: none;
 }

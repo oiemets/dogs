@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory, useRouteMatch } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
 import { Carousel } from '../../components';
 import { Patch } from '../../assets';
@@ -19,6 +19,7 @@ type Params = { id: string };
 const styleNames = bindStyles.bind(styles);
 
 export const Breed: React.FC = () => {
+  const { path } = useRouteMatch();
   const { id } = useParams<Params>();
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -57,20 +58,17 @@ export const Breed: React.FC = () => {
           onClick={historyGoBack}
           className={styleNames('icon')}
         />
-        <Link
-          to={'/breeds'}
-          className={styleNames('linkBtn')}
+        <Button
+          variant='satin'
+          labelClassName={styleNames('btn')}
+          active={path === `/breeds/:id`}
         >
-          <Button
-            variant='satin'
-            labelClassName={styleNames('btn')}
-          >
-            breeds
-          </Button>
-        </Link>
+          breeds
+        </Button>
         <ButtonLabel
           variant='geraldine'
           labelClassName={styleNames('idLabel')}
+          active={path === `/breeds/:id`}
         >
           {id}
         </ButtonLabel>

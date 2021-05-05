@@ -19,6 +19,11 @@ export const getBreedNames = createSelector(
   breeds => breeds.map(breed => breed.name)
 );
 
+export const getBreedNamesWithId = createSelector(
+  breedsData,
+  breeds => breeds.map(breed => ({ value: breed.id, name: breed.name }))
+);
+
 export const getBreedsImages = createSelector(
   breedsData,
   breeds => breeds.map(breed => breed.image?.url)
@@ -28,9 +33,3 @@ export const getBreedsIds = createSelector(
   breedsData,
   breeds => breeds.map(breed => breed.id)
 );
-
-export const setBreedsBackwards = createSelector(
-  breedsData,
-  breeds => [...breeds.reverse()]
-);
-
