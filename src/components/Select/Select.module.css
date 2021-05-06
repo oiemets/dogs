@@ -1,0 +1,51 @@
+.root {
+  display: flex;
+  width: 100%;
+  min-width: 100px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  font: 400 16px/24px Jost;
+  cursor: pointer;
+  background: url('./v.svg') right 10px top 50%/12px no-repeat;
+}
+
+.root:hover {
+  border: 2px solid #FBE0DC;
+}
+
+.select {
+  width: 100%;
+  text-overflow: ellipsis;
+  padding: 0 32px 0 10px;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  cursor: inherit;
+  outline: none;
+  box-sizing: border-box;
+}
+
+
+
+/** variants */
+
+.gray {
+  background-color: #F8F8F7;
+}
+
+.graySelect {
+  color: rgba(140, 140, 140, 1);
+}
+
+
+.white {
+  background-color: #fff;
+}
+
+.whiteSelect {
+  color: #1D1D1D;
+}

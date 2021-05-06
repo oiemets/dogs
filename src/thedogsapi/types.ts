@@ -19,7 +19,7 @@ type ListQueryParams = {
 }
 
 export type Breed = {
-  id: number;
+  id: number | string;
   name: string;
   bred_for?: string;
   breed_group?: string;

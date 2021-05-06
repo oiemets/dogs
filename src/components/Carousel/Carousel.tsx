@@ -7,14 +7,15 @@ import bindStyles from 'classnames/bind';
 type CarouselProps = {
   children?: React.ReactChild[];
   images: { url: string, name: string }[];
+  className?: string;
 }
 
 const styleNames = bindStyles.bind(styles);
 
-export const Carousel: React.FC<CarouselProps> = ({ images }) => {
+export const Carousel: React.FC<CarouselProps> = ({ images, className }) => {
   return (
     <ReactCarousel
-      className={styleNames('root')}
+      className={styleNames('root', className)}
       axis='horizontal'
       showArrows={false}
       showStatus={false}

@@ -20,8 +20,8 @@
 /*  W H I T E  */
 
 .white {
-  color: #FF868E;
-  background-color: #FFFFFF;
+  color: #ff868e;
+  background-color: #ffffff;
 }
 
 .root:focus .white {
@@ -29,22 +29,26 @@
 }
 
 .root:hover .white {
-  background-color: #FBE0DC;
+  background-color: #fbe0dc;
   transition-timing-function: ease-in;
   transition: 0.3s;
 }
 
-.root:active .white,
-.active {
+.root:active .white {
   color: #ffffff;
-  background-color: #FF868E;
+  background-color: #ff868e;
+}
+
+.white.active {
+  color: #ffffff;
+  background-color: #ff868e;
 }
 
 /*  W H I T E   D A R K   */
 
 .whiteDark {
-  color: #FF868E;
-  background-color: #FFFFFF;
+  color: #ff868e;
+  background-color: #ffffff;
 }
 
 .root:focus .whiteDark {
@@ -52,48 +56,61 @@
 }
 
 .root:hover .whiteDark {
-  color: #FFFFFF;
-  background-color: #FF868E;
+  color: #ffffff;
+  background-color: #ff868e;
   transition-timing-function: ease-in;
   transition: 0.3s;
 }
-
 
 /*  S A T I N  */
 
 .satin {
-  color: #FF868E;
-  background-color: #FBE0DC;
+  color: #ff868e;
+  background-color: #fbe0dc;
 }
 
 .root:hover .satin {
-  color: #FFFFFF;
-  background-color: #FF868E;
+  color: #ffffff;
+  background-color: #ff868e;
   transition-timing-function: ease-in;
   transition: 0.3s;
+}
+
+.satin.active {
+  cursor: default;
+}
+
+.satin.active:hover {
+  cursor: default;
+  color: #ff868e;
+  background-color: #fbe0dc;
 }
 
 /*  G E R A L D I N E  */
 
 .geraldine {
-  color: #FFFFFF; 
-  background-color: #FF868E;
+  color: #ffffff;
+  background-color: #ff868e;
 }
 
 .root:hover .geraldine {
-  color: #FF868E;
-  background-color: #FBE0DC;
+  color: #ff868e;
+  background-color: #fbe0dc;
   transition-timing-function: ease-in;
   transition: 0.3s;
 }
 
-
+.root:hover .geraldine.active {
+  cursor: default;
+  color: #ffffff;
+  background-color: #ff868e;
+}
 
 /*  G R A Y  */
 
 .gray {
-  color: #8C8C8C;
-  background-color: #F8F8F7;
+  color: #8c8c8c;
+  background-color: #f8f8f7;
 }
 
 .root:focus .gray {
@@ -101,8 +118,27 @@
 }
 
 .root:hover .gray {
-  color: #FF868E;
-  border: 2px solid #FBE0DC;
+  color: #ff868e;
+  border: 2px solid #fbe0dc;
   transition-timing-function: ease-in;
   transition: 0.3s;
+}
+
+.root:active .gray {
+  color: #ff868e;
+  border: 2px solid #fbe0dc;
+  transition-timing-function: ease-in;
+  transition: 0.3s;
+}
+
+.gray.active {
+  color: #ff868e;
+  border: 2px solid #fbe0dc;
+  transition-timing-function: ease-in;
+  transition: 0.3s;
+}
+
+.gray.active:hover {
+  cursor: default;
+  pointer-events: none;
 }

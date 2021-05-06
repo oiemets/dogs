@@ -1,0 +1,23 @@
+.app {
+  display: flex;
+}
+
+.left, .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 10px;
+}
+
+.left {
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+}
+
+.right {
+  align-items: center;
+}
+
+

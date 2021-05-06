@@ -1,0 +1,108 @@
+.root {
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.isLoading {
+  min-width: 680px;
+  min-height: 770px;
+  position: relative;
+}
+
+.loadingTitle {
+  font: 400 1em Jost;
+  color: rgba(140, 140, 140, 1);
+  position: absolute;
+  top: 50%;
+  align-self: center;
+}
+
+
+/** navigation */
+
+.nav {
+  display: flex;
+}
+
+.icon {
+  border: none;
+  margin-right: 10px;
+}
+
+.linkBtn {
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.navBtn {
+  font-size: 20px;
+  font-weight: normal;
+  padding: 10px 30px;
+}
+
+.navRight {
+  display: flex;
+}
+
+.navRight > *:not(:last-child) {
+  margin-right: 10px;
+}
+
+.breedSelect {
+  margin-right: 20px;
+}
+
+.orderBtn {
+  padding: 8px;
+}
+
+
+/**  grid  */
+
+.grid {
+  margin-top: 25px;
+  width: fit-content;
+}
+
+.link {
+  display: block;
+	text-decoration: none;
+	outline: none;
+	position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.img {
+  display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+  object-position: center;
+}
+
+.btn {
+	position: absolute;
+	display: none;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.link:hover .btn {
+	display: inline-block;
+}
+
+.link:hover .img {
+  filter: sepia(1) hue-rotate(301deg) opacity(60%);
+  transition-timing-function: ease-in;
+  transition: 0.3s;
+}
+
+.link:active .btn {
+  color: #ffffff;
+  background-color: #FF868E;
+}

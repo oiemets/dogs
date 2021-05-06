@@ -1,13 +1,11 @@
 import React from 'react';
-import { IconFrame } from '../../components';
+import styles from './Home.module.css';
+import bindStyles from 'classnames/bind';
+
+const styleNames = bindStyles.bind(styles);
 
 export const Home: React.FC = () => {
   return (
-    <>
-      <h1>HOME</h1>
-      <IconFrame target='voting'/>
-      <IconFrame target='breeds'/>
-      <IconFrame target='gallery'/>
-    </>
+    <div className={styleNames('bg')} />
   );
 };

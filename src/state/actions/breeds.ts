@@ -14,9 +14,15 @@ export const breedsLoadSuccess = (breeds: Breed[]): BreedsLoadSuccess => ({
   payload: breeds
 });
 
-export const loadBreeds = (limit?: string): AppCommand => async ( dispatch, _, {api} ) => {
+export const loadBreeds = (): AppCommand => async (dispatch, _, { api }) => {
   dispatch(breedsLoadStart());
-  const breeds = await api.breeds().list({limit});
+  const breeds = await api.breeds().list();
   dispatch(breedsLoadSuccess(breeds));
+};
+
+export const searchBreedByName = (name: string): AppCommand => async (dispatch, _, { api }) => {
+  dispatch(breedsLoadStart());
+  const breed = await api.breeds().search(name);
+  dispatch(breedsLoadSuccess(breed));
 };
 
