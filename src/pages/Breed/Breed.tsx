@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import { useParams, useHistory, useRouteMatch } from 'react-router-dom';
+import {
+  useParams,
+  useHistory,
+  Link,
+  useRouteMatch
+} from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
 import { Carousel } from '../../components';
 import { Patch } from '../../assets';
@@ -58,12 +63,17 @@ export const Breed: React.FC = () => {
           onClick={historyGoBack}
           className={styleNames('icon')}
         />
-        <Button
+        <Link
+          to={'/breeds'}
+          className={styleNames('linkBtn')}
+        >
+          <Button
           variant='satin'
           labelClassName={styleNames('btn')}
         >
           breeds
         </Button>
+        </Link>
         <ButtonLabel
           variant='geraldine'
           labelClassName={styleNames('idLabel')}
