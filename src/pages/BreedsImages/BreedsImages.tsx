@@ -3,7 +3,6 @@ import {
   Link,
   useHistory
 } from 'react-router-dom';
-
 import { useTypedSelector, useQuery } from '../../hooks';
 import {
   breedsData,
@@ -23,7 +22,11 @@ import {
 import bindStyles from 'classnames/bind';
 import styles from './BreedsImages.module.css';
 import { Breed } from '../../thedogsapi';
-import { loadBreeds, setLimit } from '../../state/actions';
+import {
+  loadBreeds,
+  setLimit,
+  setSortingOrder
+} from '../../state/actions';
 import { Patch } from '../../assets';
 import { ensureLeadingSlash } from '../../utils';
 
@@ -61,10 +64,11 @@ export const BreedsImages: React.FC = () => {
   const rawBreeds = useTypedSelector(state => breedsData(state));
   const breedNames = useTypedSelector(state => getBreedNamesWithId(state));
   const [selectedBreed, setSelectedBreed] = useState('');
-  const [sort, setSort] = useState<SortDirection | undefined>();
 
   const query = useQuery();
   const limit = Number(query.get('limit')) || DEFAULT_LIMIT;
+  const order = query.get('order');
+
 
   useEffect(() => {
     dispatch(loadBreeds());
@@ -74,8 +78,8 @@ export const BreedsImages: React.FC = () => {
     () => {
       let result = [...rawBreeds];
 
-      if (sort) {
-        sort === 'asc' ?
+      if (order) {
+        order === 'asc' ?
           result.sort(breedsAscSorter) :
           result.sort(breedsAscSorter).reverse();
       }
@@ -84,7 +88,7 @@ export const BreedsImages: React.FC = () => {
 
       return result;
     },
-    [rawBreeds, sort, limit]
+    [rawBreeds, order, limit]
   );
 
   const onBreedNameChange = useCallback(({ value, text }: SelectBreed) => {
@@ -98,8 +102,8 @@ export const BreedsImages: React.FC = () => {
   }, [dispatch]);
 
   const onSortChange = useCallback((sort: SortDirection) => {
-    setSort(sort)
-  }, [setSort]);
+    dispatch(setSortingOrder(sort));
+  }, [dispatch]);
 
   return (
     <div className={styleNames('root', { 'isLoading': isLoading })}>
@@ -144,14 +148,14 @@ export const BreedsImages: React.FC = () => {
                 <IconButton
                   icon='asc'
                   variant='gray'
-                  active={sort === 'asc'}
+                  active={order === 'asc'}
                   className={styleNames('orderBtn')}
                   onClick={() => onSortChange('asc')}
                 />
                 <IconButton
                   icon='desc'
                   variant='gray'
-                  active={sort === 'desc'}
+                  active={order === 'desc'}
                   className={styleNames('orderBtn')}
                   onClick={() => onSortChange('desc')}
                 />
