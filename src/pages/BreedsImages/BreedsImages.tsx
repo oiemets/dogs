@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Link,
   useRouteMatch,
-  useHistory
+  useHistory,
+  useLocation
 } from 'react-router-dom';
-import { useTypedSelector } from '../../hooks';
+import { useTypedSelector, useQuery } from '../../hooks';
 import {
   breedsData,
   breedsReady,
@@ -27,10 +28,14 @@ import { Patch } from '../../assets';
 
 const styleNames = bindStyles.bind(styles);
 
-const limitSelectOptions = [5, 10, 15, 20].map(n => ({
+const limitPresets = [5, 10, 15, 20];
+
+const limitSelectOptions = limitPresets.map(n => ({
   value: n,
   text: `Limit: ${n}`
 }));
+
+const isLimitPreset = (n: number) => limitPresets.includes(n);
 
 const allBreeds = {value: '', name: 'All breeds'};
 
@@ -48,19 +53,43 @@ const breedsAscSorter = (a: Breed, b: Breed) => {
 
 type SortDirection = 'asc' | 'desc';
 
+type LimitPresets = typeof limitPresets[number];
+
 export const BreedsImages: React.FC = () => {
   const { path } = useRouteMatch();
   const renderItem = getRenderItem(path);
   const dispatch = useAppDispatch();
   const history = useHistory();
   const historyGoBack = () => history.goBack();
+  const { pathname } = useLocation();
+  const query = useQuery();
 
   const isLoading = !useTypedSelector(state => breedsReady(state));
   const rawBreeds = useTypedSelector(state => breedsData(state));
   const breedNames = useTypedSelector(state => getBreedNamesWithId(state));
   const [selectedBreed, setSelectedBreed] = useState('');
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState<LimitPresets>(10);
   const [sort, setSort] = useState<SortDirection | undefined>();
+
+  useEffect(() => {
+    dispatch(loadBreeds());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const queryLimit = Number(query.get('limit'));
+
+    if (isLimitPreset(queryLimit)) {
+      setLimit(queryLimit)
+    }
+
+  }, []);
+
+  useEffect(() => {
+    history.push({
+      pathname,
+      search: `?limit=${limit}`
+    });
+  }, [limit]);
 
   const breeds = useMemo(
     () => {
@@ -86,16 +115,12 @@ export const BreedsImages: React.FC = () => {
 
 
   const onLimitChange = useCallback(({value}) => {
-    setLimit(Number(value))
+    setLimit(Number(value));
   }, [setLimit]);
 
   const onSortChange = useCallback((sort: SortDirection) => {
     setSort(sort)
   }, [setSort]);
-
-  useEffect(() => {
-    dispatch(loadBreeds());
-  }, [dispatch]);
 
   return (
     <div className={styleNames('root', { 'isLoading': isLoading })}>

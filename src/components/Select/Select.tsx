@@ -5,6 +5,7 @@ import styles from './Select.module.css';
 const styleNames = bindStyles.bind(styles);
 
 export type SelectValue = string | number;
+
 type SelectBreed = { value: SelectValue, text: string };
 
 type SelectProps = {
