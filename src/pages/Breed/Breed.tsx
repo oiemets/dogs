@@ -61,14 +61,13 @@ export const Breed: React.FC = () => {
         <Button
           variant='satin'
           labelClassName={styleNames('btn')}
-          active={path === `/breeds/:id`}
         >
           breeds
         </Button>
         <ButtonLabel
           variant='geraldine'
           labelClassName={styleNames('idLabel')}
-          active={path === `/breeds/:id`}
+          active
         >
           {id}
         </ButtonLabel>

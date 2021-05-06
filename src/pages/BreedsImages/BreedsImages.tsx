@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Link,
-  useRouteMatch,
-  useHistory,
-  useLocation
+  useHistory
 } from 'react-router-dom';
+
 import { useTypedSelector, useQuery } from '../../hooks';
 import {
   breedsData,
@@ -17,27 +16,27 @@ import {
   ButtonLabel,
   roundedClassName,
   Select,
+  SelectBreed,
   IconButton,
   Button
 } from '../../components';
 import bindStyles from 'classnames/bind';
 import styles from './BreedsImages.module.css';
 import { Breed } from '../../thedogsapi';
-import { loadBreeds } from '../../state/actions';
+import { loadBreeds, setLimit } from '../../state/actions';
 import { Patch } from '../../assets';
+import { ensureLeadingSlash } from '../../utils';
 
 const styleNames = bindStyles.bind(styles);
 
-const limitPresets = [5, 10, 15, 20];
-
-const limitSelectOptions = limitPresets.map(n => ({
+const LIMIT_PRESETS = [5, 10, 15, 20] as const;
+const DEFAULT_LIMIT = LIMIT_PRESETS[1];
+const limitSelectOptions = LIMIT_PRESETS.map(n => ({
   value: n,
   text: `Limit: ${n}`
 }));
 
-const isLimitPreset = (n: number) => limitPresets.includes(n);
-
-const allBreeds = {value: '', name: 'All breeds'};
+const ALL_BREEDS = {value: '', name: 'All breeds'} as const;
 
 const breedsAscSorter = (a: Breed, b: Breed) => {
   const nameA = a.name.toUpperCase();
@@ -53,43 +52,23 @@ const breedsAscSorter = (a: Breed, b: Breed) => {
 
 type SortDirection = 'asc' | 'desc';
 
-type LimitPresets = typeof limitPresets[number];
-
 export const BreedsImages: React.FC = () => {
-  const { path } = useRouteMatch();
-  const renderItem = getRenderItem(path);
   const dispatch = useAppDispatch();
   const history = useHistory();
   const historyGoBack = () => history.goBack();
-  const { pathname } = useLocation();
-  const query = useQuery();
 
   const isLoading = !useTypedSelector(state => breedsReady(state));
   const rawBreeds = useTypedSelector(state => breedsData(state));
   const breedNames = useTypedSelector(state => getBreedNamesWithId(state));
   const [selectedBreed, setSelectedBreed] = useState('');
-  const [limit, setLimit] = useState<LimitPresets>(10);
   const [sort, setSort] = useState<SortDirection | undefined>();
+
+  const query = useQuery();
+  const limit = Number(query.get('limit')) || DEFAULT_LIMIT;
 
   useEffect(() => {
     dispatch(loadBreeds());
   }, [dispatch]);
-
-  useEffect(() => {
-    const queryLimit = Number(query.get('limit'));
-
-    if (isLimitPreset(queryLimit)) {
-      setLimit(queryLimit)
-    }
-
-  }, []);
-
-  useEffect(() => {
-    history.push({
-      pathname,
-      search: `?limit=${limit}`
-    });
-  }, [limit]);
 
   const breeds = useMemo(
     () => {
@@ -105,18 +84,18 @@ export const BreedsImages: React.FC = () => {
 
       return result;
     },
-    [rawBreeds, limit, sort]
+    [rawBreeds, sort, limit]
   );
 
-  const onBreedNameChange = useCallback(({ value, text }) => {
+  const onBreedNameChange = useCallback(({ value, text }: SelectBreed) => {
     setSelectedBreed(text);
-    history.push(`${path}/${value}`)
-  }, [history, path]);
+    history.push(`${ensureLeadingSlash(history.location.pathname)}${value}`)
+  }, [history]);
 
 
   const onLimitChange = useCallback(({value}) => {
-    setLimit(Number(value));
-  }, [setLimit]);
+    dispatch(setLimit(value));
+  }, [dispatch]);
 
   const onSortChange = useCallback((sort: SortDirection) => {
     setSort(sort)
@@ -138,7 +117,7 @@ export const BreedsImages: React.FC = () => {
           <Button
             variant='geraldine'
             labelClassName={styleNames('navBtn')}
-            active={path === '/breeds'}
+            active
           >
             breeds
           </Button>
@@ -147,7 +126,7 @@ export const BreedsImages: React.FC = () => {
           !isLoading ?
             <>
               <Select
-                options={[allBreeds, ...breedNames].map(name => ({
+                options={[ALL_BREEDS, ...breedNames].map(name => ({
                   value: name.value,
                   text: name.name
                 }))}
@@ -198,9 +177,13 @@ export const BreedsImages: React.FC = () => {
   );
 };
 
-const getRenderItem = (path: string) => ({ id, name, image }: Breed) =>
+const renderItem = ({ id, name, image }: Breed) => (
   <Link
-    to={`${path}/${id}`}
+    to={location => ({
+      ...location,
+      search: '',
+      pathname: `${ensureLeadingSlash(location.pathname)}${id}`
+    })}
     className={styleNames('link')}
     key={id}
   >
@@ -218,5 +201,6 @@ const getRenderItem = (path: string) => ({ id, name, image }: Breed) =>
     >
       {name}
     </ButtonLabel>
-  </Link>;
+  </Link>
+);
 

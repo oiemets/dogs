@@ -3,6 +3,7 @@ import { Breed, TheDogsAPIClient, PublicImage } from '../thedogsapi';
 import { Action } from './actions';
 import { Resource } from './resources';
 import { Selector } from 'reselect';
+import { History } from 'history';
 
 export type AppState = {
   breeds?: Resource<Breed[]>;
@@ -10,7 +11,8 @@ export type AppState = {
 }
 
 export type Services = {
-  api: TheDogsAPIClient
+  api: TheDogsAPIClient;
+  history: History;
 }
 
 export type AppAction<T extends string, P = null> = {
