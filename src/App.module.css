@@ -11,6 +11,9 @@
   padding-right: 30px;
   width: calc(50% + var(--between) - var(--padding));
   text-align: center;
+  position: sticky;
+  top: var(--padding);
+  align-self: flex-start;
 }
 
 .right {
