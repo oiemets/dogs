@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import {
   useParams,
   useHistory,
-  Link,
-  useRouteMatch
+  Link
 } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks';
 import { Carousel } from '../../components';
@@ -24,7 +23,6 @@ type Params = { id: string };
 const styleNames = bindStyles.bind(styles);
 
 export const Breed: React.FC = () => {
-  const { path } = useRouteMatch();
   const { id } = useParams<Params>();
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -46,7 +44,11 @@ export const Breed: React.FC = () => {
   } = useTypedSelector(state => getImagesBreedInfo(state));
 
   if (isLoading) {
-    return <div style={{ width: 'fit-content' }}>images are loading...</div>
+    return (
+      <div className={styleNames('loadingTitle')}>
+        images are loading...
+      </div>
+    )
   }
 
   if (images.length === 0) {

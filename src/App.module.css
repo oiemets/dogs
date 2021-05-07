@@ -1,23 +1,63 @@
 .app {
+  width: 100%;
   display: flex;
-}
-
-.left, .right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  padding: 10px;
+  justify-content: space-between;
+  --padding: 30px;
+  --between: 40px;
+  padding: var(--padding);
 }
 
 .left {
-  align-self: flex-start;
-  position: sticky;
-  top: 0;
+  padding-right: 30px;
+  width: calc(50% + var(--between) - var(--padding));
+  text-align: center;
 }
 
 .right {
-  align-items: center;
+  width: calc(50% - var(--between) + var(--padding));
 }
 
+.main {
+  display: inline-block;
+  text-align: left;
+}
 
+.home::before {
+  content: '';
+  position: fixed;
+  top: var(--padding);
+  right: var(--padding);
+  bottom: var(--padding);
+  width: calc(50% - var(--between));
+  background: #fbe0dc;
+  border-radius: 20px;
+}
+
+.home::after {
+  content: '';
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: calc(50% + 55px);
+  height: 100%;
+  background: 50% 10px url('./assets/images/girlAndPet.png') no-repeat;
+  background-size: 100% auto;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .home::after {
+    background-image: url('./assets/images/girlAndPet@2x.png');
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .home::after {
+    background-position: 50% 30%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .home::after {
+    background-position: 50% 50%;
+  }
+}

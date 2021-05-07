@@ -5,7 +5,6 @@ import {
   FavouritesListQueryParams, FavouriteID,
   AddFavouritePayload, AddFavouriteResponse, PublicImage, ImagesListQueryParams
 } from './types';
-import { toQueryParamsString } from '../utils';
 export class TheDogsAPIClient {
 
   static readonly baseUrl = 'https://api.thedogapi.com/v1/';
@@ -53,14 +52,14 @@ export class TheDogsAPIClient {
   });
 
   favourites = () => ({
-    list: (params?: FavouritesListQueryParams) => this.favouritesList(toQueryParamsString(params)),
+    list: (params?: FavouritesListQueryParams) => this.favouritesList(new URLSearchParams(params).toString()),
     getById: (id: FavouriteID) => this.getFavourite(id),
     add: (payload: AddFavouritePayload) => this.addFavourite(payload),
     delete: (id: FavouriteID) => this.deleteFavourite(id)
   });
 
   images = () => ({
-    list: (params: ImagesListQueryParams) => this.imagesList(toQueryParamsString(params))
+    list: (params: ImagesListQueryParams) => this.imagesList(new URLSearchParams(params).toString())
   });
 };
 

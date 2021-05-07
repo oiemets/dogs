@@ -1,9 +1,16 @@
 import styles from './App.module.css';
 import bindStyles from 'classnames/bind';
-import { Switch, Route } from 'react-router-dom';
-import { Menu } from './components';
 import {
-  Home,
+  Switch,
+  Route,
+  useLocation
+} from 'react-router-dom';
+import {
+  Menu,
+  Logotype,
+  Header
+} from './components';
+import {
   Voting,
   Breeds,
   Gallery,
@@ -16,23 +23,32 @@ import {
 const styleNames = bindStyles.bind(styles);
 
 function App() {
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
+
   return (
-    <div className={styleNames('app')}>
+    <div className={styleNames('app', { home: isHome })}>
       <div className={styleNames('left')}>
-        <Menu />
+        <div className={styleNames('main')}>
+          <Logotype linkToRoot={!isHome} />
+          <Header />
+          <Menu />
+        </div>
       </div>
-      <div className={styleNames('right')}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/voting" component={Voting} />
-          <Route path="/breeds" component={Breeds} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/favourites" component={Favourites} />
-          <Route path="/likes" component={Likes} />
-          <Route path="/dislikes" component={Dislikes} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
+      {
+        isHome ? null : (
+          <div className={styleNames('right')}>
+            <Switch>
+              <Route path="/voting" component={Voting} />
+              <Route path="/breeds" component={Breeds} />
+              <Route path="/gallery" component={Gallery} />
+              <Route path="/favourites" component={Favourites} />
+              <Route path="/likes" component={Likes} />
+              <Route path="/dislikes" component={Dislikes} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        )}
     </div>
   );
 };

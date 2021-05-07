@@ -7,6 +7,14 @@
   align-items: center;
 }
 
+.loadingTitle {
+  font: 400 1em Jost;
+  color: rgba(140, 140, 140, 1);
+  position: absolute;
+  top: 40%;
+  right: 20%;
+}
+
 .nav {
   width: 100%;
   display: flex;
