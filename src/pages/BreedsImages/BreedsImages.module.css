@@ -1,4 +1,23 @@
+.searchNavBar {
+  display: flex;
+  min-width: 250px;
+}
+
+.searchNavBar > *:not(:last-child) {
+  margin-right: 10px;
+}
+
+.searchBar {
+  flex-grow: 1;
+}
+
+.searchBarIcon {
+  border: none;
+}
+
 .root {
+  min-width: 493px;
+  margin-top: 10px;
   background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   padding: 20px;
@@ -20,11 +39,36 @@
   align-self: center;
 }
 
-
 /** navigation */
 
 .nav {
   display: flex;
+}
+
+.right {
+  display: flex;
+  flex-grow: 1;
+}
+
+.searchResultsTitle {
+  color: #8c8c8c;
+  font: 400 20px/28px Jost;
+}
+
+.searchResultsTitle span {
+  color: rgba(29, 29, 29, 1);
+}
+
+.noItem {
+  background-color: rgba(248, 248, 247, 1);
+  margin-top: 20px;
+  padding: 0 10px;
+  border-radius: 10px;
+}
+
+.noItemTitle {
+  color: rgba(140, 140, 140, 1);
+  font: 400 16px/28px Jost;
 }
 
 .icon {
@@ -32,15 +76,11 @@
   margin-right: 10px;
 }
 
-.linkBtn {
-  text-decoration: none;
-  margin-right: 10px;
-}
-
 .navBtn {
   font-size: 20px;
   font-weight: normal;
   padding: 10px 30px;
+  margin-right: 10px;
 }
 
 .navRight {
@@ -59,7 +99,6 @@
   padding: 8px;
 }
 
-
 /**  grid  */
 
 .grid {
@@ -69,31 +108,31 @@
 
 .link {
   display: block;
-	text-decoration: none;
-	outline: none;
-	position: relative;
+  text-decoration: none;
+  outline: none;
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
 }
 
 .img {
   display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
 }
 
 .btn {
-	position: absolute;
-	display: none;
-	bottom: 10px;
-	left: 50%;
-	transform: translateX(-50%);
+  position: absolute;
+  display: none;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .link:hover .btn {
-	display: inline-block;
+  display: inline-block;
 }
 
 .link:hover .img {
@@ -104,5 +143,17 @@
 
 .link:active .btn {
   color: #ffffff;
-  background-color: #FF868E;
+  background-color: #ff868e;
+}
+
+@media (max-width: 1200px) {
+  .searchNavBar {
+    flex-wrap: wrap;
+  }
+  .nav {
+    flex-wrap: wrap;
+  }
+  .right {
+    margin-top: 10px;
+  }
 }

@@ -8,7 +8,11 @@ import {
   breedsData,
   breedsReady,
   getBreedNamesWithId,
-  useAppDispatch
+  useAppDispatch,
+  loadBreeds,
+  searchBreedByName,
+  setLimit,
+  setSortingOrder
 } from '../../state';
 import {
   Grid,
@@ -17,16 +21,12 @@ import {
   Select,
   SelectBreed,
   IconButton,
-  Button
+  Button,
+  Search
 } from '../../components';
 import bindStyles from 'classnames/bind';
 import styles from './BreedsImages.module.css';
 import { Breed } from '../../thedogsapi';
-import {
-  loadBreeds,
-  setLimit,
-  setSortingOrder
-} from '../../state/actions';
 import { Patch } from '../../assets';
 import { ensureLeadingSlash } from '../../utils';
 
@@ -68,11 +68,15 @@ export const BreedsImages: React.FC = () => {
   const query = useQuery();
   const limit = Number(query.get('limit')) || DEFAULT_LIMIT;
   const order = query.get('order');
-
+  const search = query.get('q');
 
   useEffect(() => {
-    dispatch(loadBreeds());
-  }, [dispatch]);
+    if (search) {
+      dispatch(searchBreedByName(search))
+    } else {
+      dispatch(loadBreeds());
+    }
+  }, [dispatch, search]);
 
   const breeds = useMemo(
     () => {
@@ -105,19 +109,26 @@ export const BreedsImages: React.FC = () => {
     dispatch(setSortingOrder(sort));
   }, [dispatch]);
 
+  const onIconClick = useCallback((link: string) => {
+    history.push(link);
+  }, [history]);
+
   return (
-    <div className={styleNames('root', { 'isLoading': isLoading })}>
-      <div className={styleNames('nav')}>
-        <IconButton
+    <>
+      <div className={styleNames('searchNavBar')}>
+        <Search className={styleNames('searchBar')}/>
+        <IconButton icon='smile' variant='white' size='M' className={styleNames('searchBarIcon')} onClick={() => onIconClick('/likes')}/>
+        <IconButton icon='heart' variant='white' size='M' className={styleNames('searchBarIcon')} onClick={() => onIconClick('/favourites')}/>
+        <IconButton icon='sad' variant='white' size='M' className={styleNames('searchBarIcon')} onClick={() => onIconClick('/dislikes')}/>
+      </div>
+      <div className={styleNames('root', { 'isLoading': isLoading })}>
+        <div className={styleNames('nav')}>
+          <IconButton
           icon='arrowLeft'
           variant='satin'
           onClick={historyGoBack}
           className={styleNames('icon')}
-        />
-        <Link
-          to={'/breeds'}
-          className={styleNames('linkBtn')}
-        >
+          />
           <Button
             variant='geraldine'
             labelClassName={styleNames('navBtn')}
@@ -125,46 +136,60 @@ export const BreedsImages: React.FC = () => {
           >
             breeds
           </Button>
-        </Link>
-        {
-          !isLoading ?
-            <>
-              <Select
-                options={[ALL_BREEDS, ...breedNames].map(name => ({
-                  value: name.value,
-                  text: name.name
-                }))}
-                value={selectedBreed}
-                className={styleNames('breedSelect')}
-                onChange={onBreedNameChange}
-              />
-
-              <div className={styleNames('navRight')}>
+          {
+            !isLoading && !search ?
+              <div className={styleNames('right')}>
                 <Select
-                  options={limitSelectOptions}
-                  value={limit}
-                  onChange={onLimitChange}
+                  options={[ALL_BREEDS, ...breedNames].map(name => ({
+                    value: name.value,
+                    text: name.name
+                  }))}
+                  value={selectedBreed}
+                  className={styleNames('breedSelect')}
+                  onChange={onBreedNameChange}
                 />
-                <IconButton
-                  icon='asc'
-                  variant='gray'
-                  active={order === 'asc'}
-                  className={styleNames('orderBtn')}
-                  onClick={() => onSortChange('asc')}
-                />
-                <IconButton
-                  icon='desc'
-                  variant='gray'
-                  active={order === 'desc'}
-                  className={styleNames('orderBtn')}
-                  onClick={() => onSortChange('desc')}
-                />
-              </div>
-            </> :
+
+                <div className={styleNames('navRight')}>
+                  <Select
+                    options={limitSelectOptions}
+                    value={limit}
+                    onChange={onLimitChange}
+                  />
+                  <IconButton
+                    icon='asc'
+                    variant='gray'
+                    active={order === 'asc'}
+                    className={styleNames('orderBtn')}
+                    onClick={() => onSortChange('asc')}
+                  />
+                  <IconButton
+                    icon='desc'
+                    variant='gray'
+                    active={order === 'desc'}
+                    className={styleNames('orderBtn')}
+                    onClick={() => onSortChange('desc')}
+                  />
+                </div>
+              </div> :
+            null
+          }
+        </div>
+        {
+          search && rawBreeds.length === 0 ?
+            <div className={styleNames('noItem')}>
+              <h3 className={styleNames('noItemTitle')}>
+                No item found
+              </h3>
+            </div> :
+          null
+        }
+        {
+          search && rawBreeds.length > 0 ?
+            <h3 className={styleNames('searchResultsTitle')}>
+              Search results for <span>{search}</span>:
+            </h3> :
             null
         }
-      </div>
-
       {
         isLoading ?
           <h3 className={styleNames('loadingTitle')}>
@@ -177,7 +202,8 @@ export const BreedsImages: React.FC = () => {
             />
           </div>
       }
-    </div>
+      </div>
+    </>
   );
 };
 
