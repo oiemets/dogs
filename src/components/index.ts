@@ -8,6 +8,8 @@ export * from './IconFrame';
 export * from './ImageWithSocialActions';
 export * from './Logotype';
 export * from './Menu';
+export * from './NavGoBack';
+export * from './SearchBar';
 export * from './Search';
 export * from './Select';
 export * from './SocialActions';

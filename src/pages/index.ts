@@ -6,5 +6,6 @@ export * from './Favourites';
 export * from './Gallery';
 export * from './Likes';
 export * from './NotFound';
+export * from './SearchResults';
 export * from './Upload';
 export * from './Voting';

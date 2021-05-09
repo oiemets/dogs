@@ -1,58 +1,52 @@
-import React, { useCallback, useState } from 'react';
-import { IconButton } from '../IconButton/IconButton';
+import React, { useCallback } from 'react';
 import styles from './Search.module.css';
 import bindStyles from 'classnames/bind';
-import { setSearch, useAppDispatch  } from '../../state';
+import { useHistory } from 'react-router-dom';
+import { SearchBar, IconButton } from '../../components';
+import { setSearch, useAppDispatch } from '../../state';
+import { useQuery } from '../../hooks';
 
 const styleNames = bindStyles.bind(styles);
 
-const placeholder = 'Search for breeds by name';
+export const Search: React.FC = () => {
+	const history = useHistory();
+	const dispatch = useAppDispatch();
+	const query = useQuery();
+	const search = query.get('q');
 
-type SearchProps = {
-  className?: string;
+	const onSearch = useCallback(
+		inputValue => {
+			// history.push('/search');
+			dispatch(setSearch(inputValue));
+		},
+		[dispatch, history]
+	);
+
+	return (
+		<div className={styleNames('searchNavBar')}>
+			<SearchBar
+				className={styleNames('searchBar')}
+				onSearch={onSearch}
+				value={search ?? ''}
+			/>
+			<IconButton
+				icon='smile'
+				variant='white'
+				size='M'
+				className={styleNames('searchBarIcon')}
+			/>
+			<IconButton
+				icon='heart'
+				variant='white'
+				size='M'
+				className={styleNames('searchBarIcon')}
+			/>
+			<IconButton
+				icon='sad'
+				variant='white'
+				size='M'
+				className={styleNames('searchBarIcon')}
+			/>
+		</div>
+	);
 };
-
-export const Search: React.FC<SearchProps> = ({
-  className
-}) => {
-  const [inputValue, setInputValue] = useState('');
-  const dispatch = useAppDispatch();
-
-  const onSearchClick = useCallback(() => {
-    if (inputValue !== '') {
-      dispatch(setSearch(inputValue))
-      setInputValue('');
-    }
-  }, [dispatch, inputValue]);
-
-  const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      onSearchClick();
-    };
-  };
-
-  const onChange = useCallback(e => {
-    const value = e.target.value;
-    setInputValue(value);
-  }, []);
-
-  return (
-    <div className={styleNames('root', className)}>
-      <input
-        value={inputValue}
-        onChange={onChange}
-        className={styleNames('search')}
-        placeholder={placeholder}
-        onKeyUp={onKeyUp}
-      />
-      <IconButton
-        onClick={onSearchClick}
-        icon='search'
-        variant='satin'
-        className={styleNames('icon')}
-      />
-    </div>
-  );
-};
-
-

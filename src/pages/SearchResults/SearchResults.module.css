@@ -1,0 +1,8 @@
+.root {
+	min-width: 493px;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 20px;
+	padding: 20px;
+	display: flex;
+	flex-flow: column nowrap;
+}
