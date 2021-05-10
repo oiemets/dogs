@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useTypedSelector } from '../../hooks';
 import { Carousel } from '../../components';
-import { Patch } from '../../assets';
 import styles from './Breed.module.css';
 import bindStyles from 'classnames/bind';
 import {
@@ -30,7 +29,7 @@ export const Breed: React.FC = () => {
 		if (breedName) {
 			dispatch(searchBreedByName(breedName));
 		}
-	}, [dispatch, id]);
+	}, [dispatch, id, breedName]);
 
 	const isImagesLoading = !useTypedSelector(state => imagesReady(state));
 	const isSearchLoading = !useTypedSelector(state => searchReady(state));
