@@ -10,16 +10,17 @@ import { createBrowserHistory } from 'history';
 const history = createBrowserHistory();
 
 ReactDOM.render(
-  <Router history={history}>
-    <Provider store={createAppStore(
-      {},
-      { 
-        api: new TheDogsAPIClient('b06400d4-45bc-4191-b373-f3ab932ced26'),
-        history
-      }
-    )}>
-      <App />
-    </Provider>
-  </Router>,
-  document.getElementById('root')
+	<Router history={history}>
+		<Provider
+			store={createAppStore(
+				{},
+				{
+					api: new TheDogsAPIClient(process.env.REACT_APP_DOGS_KEY),
+					history,
+				}
+			)}>
+			<App />
+		</Provider>
+	</Router>,
+	document.getElementById('root')
 );

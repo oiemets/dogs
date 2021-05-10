@@ -14,7 +14,11 @@ import {
 
 export class TheDogsAPIClient {
 	static readonly baseUrl = 'https://api.thedogapi.com/v1/';
-	constructor(private key: string) {}
+	constructor(private key?: string) {
+		if (!key) {
+			throw new Error('Key required!');
+		}
+	}
 
 	/** General */
 	private authHeader = { headers: { 'x-api-key': this.key } };
