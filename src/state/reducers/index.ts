@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import { breeds } from './breeds';
 import { AppState } from '../types';
+import { breeds } from './breeds';
 import { images } from './images';
+import { search } from './search';
 
 export default combineReducers<AppState>({
-  breeds,
-  images
+	breeds,
+	images,
+	search,
 });

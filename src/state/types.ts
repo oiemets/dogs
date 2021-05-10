@@ -1,33 +1,35 @@
 import { ThunkAction } from 'redux-thunk';
-import { Breed, TheDogsAPIClient, PublicImage } from '../thedogsapi';
+import {
+	Breed,
+	TheDogsAPIClient,
+	PublicImage,
+	BreedSearchResult,
+} from '../thedogsapi';
 import { Action } from './actions';
 import { Resource } from './resources';
 import { Selector } from 'reselect';
 import { History } from 'history';
 
 export type AppState = {
-  breeds?: Resource<Breed[]>;
-  images?: Resource<PublicImage[]>;
-}
+	breeds?: Resource<Breed[]>;
+	images?: Resource<PublicImage[]>;
+	search?: Resource<BreedSearchResult[]>;
+};
 
 export type Services = {
-  api: TheDogsAPIClient;
-  history: History;
-}
+	api: TheDogsAPIClient;
+	history: History;
+};
 
 export type AppAction<T extends string, P = null> = {
-  type: T;
-} & (
-    P extends null ?
-    unknown :
-    { payload: P }
-  )
+	type: T;
+} & (P extends null ? unknown : { payload: P });
 
 export type AppCommand<T = void> = ThunkAction<
-  Promise<T>,
-  AppState,
-  Services,
-  Action
->
+	Promise<T>,
+	AppState,
+	Services,
+	Action
+>;
 
-export type AppSelector<R> = Selector<AppState, R>
+export type AppSelector<R> = Selector<AppState, R>;

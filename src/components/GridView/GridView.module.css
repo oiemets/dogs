@@ -1,46 +1,10 @@
-.root {
-	min-width: 493px;
-	background: rgba(255, 255, 255, 1);
-	border-radius: 20px;
-	padding: 20px;
-	display: flex;
-	flex-flow: column nowrap;
+.loadingTitle {
+	font: 400 1em Jost;
+	color: rgba(140, 140, 140, 1);
+	position: absolute;
+	top: 50%;
+	align-self: center;
 }
-
-.isLoading {
-	min-width: 680px;
-	min-height: 770px;
-	position: relative;
-}
-
-/** navigation */
-
-.nav {
-	display: flex;
-}
-
-.right {
-	display: flex;
-	flex-grow: 1;
-}
-
-.navRight {
-	display: flex;
-}
-
-.navRight > *:not(:last-child) {
-	margin-right: 10px;
-}
-
-.breedSelect {
-	margin-right: 20px;
-}
-
-.orderBtn {
-	padding: 8px;
-}
-
-/**  grid  */
 
 .grid {
 	margin-top: 25px;
@@ -85,16 +49,4 @@
 .link:active .btn {
 	color: #ffffff;
 	background-color: #ff868e;
-}
-
-@media (max-width: 1200px) {
-	.searchNavBar {
-		flex-wrap: wrap;
-	}
-	.nav {
-		flex-wrap: wrap;
-	}
-	.right {
-		margin-top: 10px;
-	}
 }

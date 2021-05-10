@@ -6,23 +6,16 @@ export type BreedsLoadStart = AppAction<'BreedsLoadStart'>;
 export type BreedsLoadSuccess = AppAction<'BreedsLoadSuccess', Breed[]>;
 
 export const breedsLoadStart = (): BreedsLoadStart => ({
-  type: 'BreedsLoadStart'
+	type: 'BreedsLoadStart',
 });
 
 export const breedsLoadSuccess = (breeds: Breed[]): BreedsLoadSuccess => ({
-  type: 'BreedsLoadSuccess',
-  payload: breeds
+	type: 'BreedsLoadSuccess',
+	payload: breeds,
 });
 
 export const loadBreeds = (): AppCommand => async (dispatch, _, { api }) => {
-  dispatch(breedsLoadStart());
-  const breeds = await api.breeds().list();
-  dispatch(breedsLoadSuccess(breeds));
+	dispatch(breedsLoadStart());
+	const breeds = await api.breeds().list();
+	dispatch(breedsLoadSuccess(breeds));
 };
-
-export const searchBreedByName = (name: string): AppCommand => async (dispatch, _, { api }) => {
-  dispatch(breedsLoadStart());
-  const breed = await api.breeds().search(name);
-  dispatch(breedsLoadSuccess(breed));
-};
-

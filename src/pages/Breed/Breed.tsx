@@ -39,7 +39,9 @@ export const Breed: React.FC = () => {
 
 	if (isLoading) {
 		return (
-			<div className={styleNames('loadingTitle')}>images are loading...</div>
+			<div className={styleNames('root', { isLoading: isLoading })}>
+				<div className={styleNames('loadingTitle')}>images are loading...</div>
+			</div>
 		);
 	}
 

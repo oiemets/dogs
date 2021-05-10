@@ -1,3 +1,7 @@
+.root {
+	display: flex;
+}
+
 .icon {
 	border: none;
 	margin-right: 10px;

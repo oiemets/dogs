@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useTypedSelector, useQuery } from '../../hooks';
 import {
 	breedsData,
@@ -7,23 +7,19 @@ import {
 	getBreedNamesWithId,
 	useAppDispatch,
 	loadBreeds,
-	searchBreedByName,
 	setLimit,
 	setSortingOrder,
 } from '../../state';
 import {
-	Grid,
-	ButtonLabel,
-	roundedClassName,
 	Select,
 	SelectBreed,
 	IconButton,
 	NavGoBack,
+	GridView,
 } from '../../components';
 import bindStyles from 'classnames/bind';
 import styles from './BreedsImages.module.css';
 import { Breed } from '../../thedogsapi';
-import { Patch } from '../../assets';
 import { ensureLeadingSlash } from '../../utils';
 
 const styleNames = bindStyles.bind(styles);
@@ -146,52 +142,12 @@ export const BreedsImages: React.FC = () => {
 						</div>
 					) : null}
 				</div>
-
-				{search && rawBreeds.length === 0 && !isLoading ? (
-					<div className={styleNames('noItem')}>
-						<h3 className={styleNames('noItemTitle')}>No item found</h3>
-					</div>
-				) : null}
-
-				{search && rawBreeds.length > 0 ? (
-					<h3 className={styleNames('searchResultsTitle')}>
-						Search results for <span>{search}</span>:
-					</h3>
-				) : null}
-
-				{isLoading ? (
-					<h3 className={styleNames('loadingTitle')}>Loading breeds page...</h3>
-				) : (
-					<div className={styleNames('grid')}>
-						<Grid data={breeds} renderItem={renderItem} />
-					</div>
-				)}
+				<GridView
+					data={breeds}
+					isLoading={isLoading}
+					loadingTitle='Loading breeds page...'
+				/>
 			</div>
 		</>
 	);
 };
-
-const renderItem = ({ id, name, image }: Breed) => (
-	<Link
-		to={location => ({
-			...location,
-			search: '',
-			pathname: `${ensureLeadingSlash(location.pathname)}${id}`,
-		})}
-		className={styleNames('link')}
-		key={id}
-	>
-		{image ? (
-			<img
-				src={`${image.url}`}
-				alt={`${name} Breed`}
-				className={styleNames('img')}
-			/>
-		) : (
-			<Patch />
-		)}
-		<ButtonLabel labelClassName={styleNames('btn', roundedClassName)}>
-			{name}
-		</ButtonLabel>
-	</Link>
-);

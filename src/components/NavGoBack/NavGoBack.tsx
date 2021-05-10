@@ -16,7 +16,7 @@ export const NavGoBack: React.FC<NavGoBackProps> = ({ title, to, idLabel }) => {
 	const history = useHistory();
 	const historyGoBack = () => history.goBack();
 	return (
-		<>
+		<div className={styleNames('root')}>
 			<IconButton
 				icon='arrowLeft'
 				variant='satin'
@@ -34,8 +34,7 @@ export const NavGoBack: React.FC<NavGoBackProps> = ({ title, to, idLabel }) => {
 					<ButtonLabel
 						variant='geraldine'
 						labelClassName={styleNames('idLabel')}
-						active
-					>
+						active>
 						{idLabel}
 					</ButtonLabel>
 				</>
@@ -43,11 +42,10 @@ export const NavGoBack: React.FC<NavGoBackProps> = ({ title, to, idLabel }) => {
 				<Button
 					variant='geraldine'
 					labelClassName={styleNames('btn', 'marginRight')}
-					active
-				>
+					active>
 					{title}
 				</Button>
 			)}
-		</>
+		</div>
 	);
 };

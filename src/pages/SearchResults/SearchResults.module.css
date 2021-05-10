@@ -6,3 +6,30 @@
 	display: flex;
 	flex-flow: column nowrap;
 }
+
+.isLoading {
+	min-width: 680px;
+	min-height: 770px;
+	position: relative;
+}
+
+.searchResultsTitle {
+	color: #8c8c8c;
+	font: 400 20px/28px Jost;
+}
+
+.searchResultsTitle span {
+	color: rgba(29, 29, 29, 1);
+}
+
+.noItem {
+	background-color: rgba(248, 248, 247, 1);
+	margin-top: 20px;
+	padding: 0 10px;
+	border-radius: 10px;
+}
+
+.noItemTitle {
+	color: rgba(140, 140, 140, 1);
+	font: 400 16px/28px Jost;
+}

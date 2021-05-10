@@ -3,30 +3,39 @@ import bindStyles from 'classnames/bind';
 import { ButtonLabelProps } from '../ButtonLabel/ButtonLabel';
 import { ButtonLabel } from '../ButtonLabel/ButtonLabel';
 import { roundedClassName } from '../ButtonLabel/ButtonLabel';
+import { Link } from 'react-router-dom';
 
 export type ButtonProps = ButtonLabelProps & {
-  onClick?: (e: React.SyntheticEvent) => void;
-}
+	onClick?: (e: React.SyntheticEvent) => void;
+	linkTo?: string;
+};
 
 const styleNames = bindStyles.bind(styles);
 
 export const Button: React.FC<ButtonProps> = ({
-  onClick,
-  labelClassName = styleNames('label'),
-  ...props
+	linkTo,
+	onClick,
+	labelClassName = styleNames('label'),
+	...props
 }) => {
-  const theme = styleNames('btn');
-  return (
-    <button
-      className={theme}
-      onClick={onClick}
-    >
-      <ButtonLabel
-        {...props}
-        labelClassName={
-          styleNames(labelClassName, roundedClassName)
-        }
-      />
-    </button>
-  );
+	const theme = styleNames('btn');
+
+	const buttonLabel = (
+		<ButtonLabel
+			{...props}
+			labelClassName={styleNames(labelClassName, roundedClassName)}
+		/>
+	);
+
+	return (
+		<>
+			{linkTo ? (
+				<Link to={linkTo}>{buttonLabel}</Link>
+			) : (
+				<button className={theme} onClick={onClick}>
+					{buttonLabel}
+				</button>
+			)}
+		</>
+	);
 };

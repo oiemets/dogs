@@ -2,6 +2,7 @@ export * from './Button';
 export * from './ButtonLabel';
 export * from './Carousel';
 export * from './Grid';
+export * from './GridView';
 export * from './Header';
 export * from './IconButton';
 export * from './IconFrame';

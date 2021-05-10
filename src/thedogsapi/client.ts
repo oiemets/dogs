@@ -38,6 +38,7 @@ export class TheDogsAPIClient {
 	private breedsList = (params: string) =>
 		this.doGetRequest<Breed[]>(this.url(`breeds?${params}`));
 
+	/** Search */
 	private breedsSearch = (query: string) =>
 		this.doGetRequest<BreedSearchResult[]>(
 			this.url(`breeds/search?q=${query}`)
@@ -64,9 +65,12 @@ export class TheDogsAPIClient {
 		this.doGetRequest<PublicImage[]>(this.url(`images/search?${params}`));
 
 	breeds = () => ({
-		search: (q: string) => this.breedsSearch(q),
 		list: (params: BreedsListQueryParams = { order: 'asc' }) =>
 			this.breedsList(new URLSearchParams(params).toString()),
+	});
+
+	search = () => ({
+		searchByName: (query: string) => this.breedsSearch(query),
 	});
 
 	favourites = () => ({
