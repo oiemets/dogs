@@ -1,16 +1,16 @@
-.searchNavBar {
+.appBar {
 	display: flex;
 	min-width: 250px;
 }
 
-.searchNavBar > *:not(:last-child) {
+.appBar > *:not(:last-child) {
 	margin-right: 10px;
 }
 
-.searchBar {
+.search {
 	flex-grow: 1;
 }
 
-.searchBarIcon {
+.icon {
 	border: none;
 }

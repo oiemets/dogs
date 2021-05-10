@@ -28,7 +28,7 @@
 }
 
 .carousel {
-	margin: 20px 0 60px;
+	margin-top: 20px;
 }
 
 /* description list */
@@ -40,6 +40,8 @@
 	display: flex;
 	flex-flow: column;
 	align-items: center;
+
+	margin-top: 60px;
 }
 
 .title {

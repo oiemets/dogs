@@ -12,5 +12,5 @@ export type Action =
 
 export * from './breeds';
 export * from './images';
-export * from './query-params';
 export * from './search';
+export * from './navigation';

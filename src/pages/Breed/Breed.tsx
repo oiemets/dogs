@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTypedSelector } from '../../hooks';
+import { useQuery, useTypedSelector } from '../../hooks';
 import { Carousel } from '../../components';
 import { Patch } from '../../assets';
 import styles from './Breed.module.css';
@@ -11,6 +11,8 @@ import {
 	getImagesWithNames,
 	imagesReady,
 	getImagesBreedInfo,
+	searchBreedByName,
+	searchReady,
 } from '../../state';
 import { NavGoBack } from '../../components';
 
@@ -20,22 +22,27 @@ const styleNames = bindStyles.bind(styles);
 
 export const Breed: React.FC = () => {
 	const { id } = useParams<Params>();
+	const breedName = useQuery().get('name');
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		dispatch(loadImages(id, '5'));
+		if (breedName) {
+			dispatch(searchBreedByName(breedName));
+		}
 	}, [dispatch, id]);
 
-	const isLoading = !useTypedSelector(state => imagesReady(state));
+	const isImagesLoading = !useTypedSelector(state => imagesReady(state));
+	const isSearchLoading = !useTypedSelector(state => searchReady(state));
+	const isLoading = isImagesLoading && isSearchLoading;
 	const images = useTypedSelector(state => getImagesWithNames(state));
-	const {
-		name,
-		bred_for,
-		height,
-		weight,
-		temperament,
-		life_span,
-	} = useTypedSelector(state => getImagesBreedInfo(state));
+	const data = useTypedSelector(state => getImagesBreedInfo(state));
+
+	if (!data) {
+		return null;
+	}
+
+	const { name, bred_for, height, weight, temperament, life_span } = data;
 
 	if (isLoading) {
 		return (
@@ -44,18 +51,15 @@ export const Breed: React.FC = () => {
 			</div>
 		);
 	}
-
-	if (images.length === 0) {
-		return <Patch />;
-	}
-
 	return (
 		<div className={styleNames('root')}>
 			<div className={styleNames('nav')}>
 				<NavGoBack title='breeds' to='/breeds' idLabel={id} />
 			</div>
 
-			<Carousel images={images} className={styleNames('carousel')} />
+			{Boolean(images.length) && (
+				<Carousel images={images} className={styleNames('carousel')} />
+			)}
 
 			<div className={styleNames('info')}>
 				<h1 className={styleNames('title')}>{name}</h1>

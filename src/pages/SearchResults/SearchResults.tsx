@@ -37,6 +37,7 @@ export const SearchResults: React.FC = () => {
 				<GridView
 					data={data}
 					isLoading={isLoading}
+					view='search'
 					loadingTitle='Searching...'
 				/>
 			)}

@@ -11,6 +11,6 @@ export * from './Logotype';
 export * from './Menu';
 export * from './NavGoBack';
 export * from './SearchBar';
-export * from './Search';
+export * from './AppBar';
 export * from './Select';
 export * from './SocialActions';

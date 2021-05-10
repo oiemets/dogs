@@ -1,7 +1,7 @@
 import styles from './App.module.css';
 import bindStyles from 'classnames/bind';
 import { Switch, Route, useLocation } from 'react-router-dom';
-import { Menu, Logotype, Header, Search } from './components';
+import { Menu, Logotype, Header, AppBar } from './components';
 import {
 	Voting,
 	Breeds,
@@ -30,7 +30,7 @@ function App() {
 			</div>
 			{isHome ? null : (
 				<div className={styleNames('right')}>
-					<Search />
+					<AppBar />
 					<Switch>
 						<Route path='/search' component={SearchResults} />
 						<Route path='/voting' component={Voting} />

@@ -16,15 +16,13 @@ type SearchProps = {
 export const SearchBar: React.FC<SearchProps> = ({
 	className,
 	onSearch,
-	value,
+	value = '',
 }) => {
 	const [inputValue, setInputValue] = useState('');
 
 	useEffect(() => {
-		if (value && inputValue === '') {
-			setInputValue(value);
-		}
-	}, []);
+		setInputValue(value);
+	}, [value]);
 
 	const onClick = useCallback(() => {
 		if (inputValue !== '') {

@@ -12,12 +12,17 @@
 }
 
 .link {
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-decoration: none;
 	outline: none;
 	position: relative;
 	border-radius: 20px;
 	overflow: hidden;
+
+	width: 100%;
+	height: 100%;
 }
 
 .img {
@@ -26,18 +31,20 @@
 	height: 100%;
 	object-fit: cover;
 	object-position: center;
+	transition: 0.3s filter;
 }
 
 .btn {
 	position: absolute;
-	display: none;
+	opacity: 0;
 	bottom: 10px;
 	left: 50%;
 	transform: translateX(-50%);
+	transition: 0.3s opacity;
 }
 
 .link:hover .btn {
-	display: inline-block;
+	opacity: 1;
 }
 
 .link:hover .img {
@@ -49,4 +56,15 @@
 .link:active .btn {
 	color: #ffffff;
 	background-color: #ff868e;
+}
+
+.patch {
+	width: 75%;
+	height: 75%;
+
+	opacity: 0.75;
+}
+
+.noImage {
+	background: #ccc;
 }

@@ -7,8 +7,8 @@ import {
 	getBreedNamesWithId,
 	useAppDispatch,
 	loadBreeds,
-	setLimit,
-	setSortingOrder,
+	setLimitQuery,
+	setSortingOrderQuery,
 } from '../../state';
 import {
 	Select,
@@ -89,14 +89,14 @@ export const BreedsImages: React.FC = () => {
 
 	const onLimitChange = useCallback(
 		({ value }) => {
-			dispatch(setLimit(value));
+			dispatch(setLimitQuery(value));
 		},
 		[dispatch]
 	);
 
 	const onSortChange = useCallback(
 		(sort: SortDirection) => {
-			dispatch(setSortingOrder(sort));
+			dispatch(setSortingOrderQuery(sort));
 		},
 		[dispatch]
 	);

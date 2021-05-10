@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
-import styles from './Search.module.css';
+import styles from './AppBar.module.css';
 import bindStyles from 'classnames/bind';
-import { useHistory, useLocation } from 'react-router-dom';
-import { SearchBar, IconButton } from '../../components';
+import { useLocation } from 'react-router-dom';
+import { SearchBar, IconButton } from '..';
 import {
-	setSearch,
+	setSearchQuery,
 	useAppDispatch,
 	searchBreedByName,
 	loadBreeds,
@@ -13,32 +13,31 @@ import { useQuery } from '../../hooks';
 
 const styleNames = bindStyles.bind(styles);
 
-export const Search: React.FC = () => {
+export const AppBar: React.FC = () => {
 	const { pathname } = useLocation();
-	const history = useHistory();
 	const dispatch = useAppDispatch();
 	const query = useQuery();
 	const search = query.get('q');
 
 	useEffect(() => {
-		if (search) {
+		const searchQuery = query.get('q');
+		if (searchQuery) {
 			dispatch(loadBreeds());
-			dispatch(searchBreedByName(search));
+			dispatch(searchBreedByName(searchQuery));
 		}
-	}, [dispatch, search]);
+	}, [dispatch, query]);
 
 	const onSearch = useCallback(
 		inputValue => {
-			history.push('/search');
-			dispatch(setSearch(inputValue));
+			dispatch(setSearchQuery(inputValue));
 		},
-		[dispatch, history]
+		[dispatch]
 	);
 
 	return (
-		<div className={styleNames('searchNavBar')}>
+		<div className={styleNames('appBar')}>
 			<SearchBar
-				className={styleNames('searchBar')}
+				className={styleNames('search')}
 				onSearch={onSearch}
 				value={search ?? ''}
 			/>
@@ -46,7 +45,7 @@ export const Search: React.FC = () => {
 				icon='smile'
 				variant='white'
 				size='M'
-				className={styleNames('searchBarIcon')}
+				className={styleNames('icon')}
 				active={pathname === '/likes'}
 				linkTo='/likes'
 			/>
@@ -54,7 +53,7 @@ export const Search: React.FC = () => {
 				icon='heart'
 				variant='white'
 				size='M'
-				className={styleNames('searchBarIcon')}
+				className={styleNames('icon')}
 				active={pathname === '/favourites'}
 				linkTo='/favourites'
 			/>
@@ -62,7 +61,7 @@ export const Search: React.FC = () => {
 				icon='sad'
 				variant='white'
 				size='M'
-				className={styleNames('searchBarIcon')}
+				className={styleNames('icon')}
 				active={pathname === '/dislikes'}
 				linkTo='/dislikes'
 			/>
