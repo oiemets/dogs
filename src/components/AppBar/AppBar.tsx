@@ -29,7 +29,7 @@ export const AppBar: React.FC = () => {
 
 	const onSearch = useCallback(
 		inputValue => {
-			dispatch(setSearchQuery(inputValue));
+			dispatch(setSearchQuery(inputValue, '/search'));
 		},
 		[dispatch]
 	);
