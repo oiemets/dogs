@@ -1,13 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { ImageWithSocialActions } from '../../components';
+import { getRandomImage, loadRandomImage, useAppDispatch } from '../../state';
+import { useTypedSelector } from '../../hooks';
 
 export const Voting: React.FC = () => {
-  return (
-    <>
-      <h1>!voting!</h1>
-      <Link to="/favourites">Favourites</Link>
-      <Link to="/likes">Likes</Link>
-      <Link to="/dislikes">Dislikes</Link>
-    </>
-  );
+	const dispatch = useAppDispatch();
+	const image = useTypedSelector(state => getRandomImage(state));
+
+	const onLikeChange = () => console.log('onLikeChange');
+	const onFavourite = () => console.log('onFavourite');
+
+	useEffect(() => {
+		dispatch(loadRandomImage());
+	}, [dispatch]);
+	return (
+		<>
+			<ImageWithSocialActions
+				url={image?.url}
+				onLikeChange={onLikeChange}
+				onFavourite={onFavourite}
+			/>
+		</>
+	);
 };

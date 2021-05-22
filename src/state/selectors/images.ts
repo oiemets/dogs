@@ -35,3 +35,5 @@ export const getImagesBreedInfo = createSelector(
 		}
 	}
 );
+
+export const getRandomImage = createSelector(imagesData, images => images[0]);

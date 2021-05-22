@@ -6,17 +6,31 @@ export type ImagesLoadStart = AppAction<'ImagesLoadStart'>;
 export type ImagesLoadSuccess = AppAction<'ImagesLoadSuccess', PublicImage[]>;
 
 export const imagesLoadStart = (): ImagesLoadStart => ({
-  type: 'ImagesLoadStart'
+	type: 'ImagesLoadStart',
 });
 
-export const imagesLoadSuccess = (images: PublicImage[]): ImagesLoadSuccess => ({
-  type: 'ImagesLoadSuccess',
-  payload: images
+export const imagesLoadSuccess = (
+	images: PublicImage[]
+): ImagesLoadSuccess => ({
+	type: 'ImagesLoadSuccess',
+	payload: images,
 });
 
-export const loadImages = (breed_id: string, limit?: string): AppCommand =>
-  async (dispatch, _, { api }) => {
-    dispatch(imagesLoadStart());
-    const images = await api.images().list({ breed_id, limit });
-    dispatch(imagesLoadSuccess(images));
-  };
+export const loadImages = (
+	breed_id: string,
+	limit?: string
+): AppCommand => async (dispatch, _, { api }) => {
+	dispatch(imagesLoadStart());
+	const images = await api.images().list({ breed_id, limit });
+	dispatch(imagesLoadSuccess(images));
+};
+
+export const loadRandomImage = (): AppCommand => async (
+	dispatch,
+	_,
+	{ api }
+) => {
+	dispatch(imagesLoadStart());
+	const image = await api.images().getRandomImage();
+	dispatch(imagesLoadSuccess(image));
+};

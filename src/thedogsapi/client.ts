@@ -10,6 +10,7 @@ import {
 	AddFavouriteResponse,
 	PublicImage,
 	ImagesListQueryParams,
+	Vote,
 } from './types';
 
 export class TheDogsAPIClient {
@@ -68,6 +69,12 @@ export class TheDogsAPIClient {
 	private imagesList = (params: string) =>
 		this.doGetRequest<PublicImage[]>(this.url(`images/search?${params}`));
 
+	private randomImage = () =>
+		this.doGetRequest<PublicImage[]>(this.url('images/search'));
+
+	/** Votes */
+	private votesList = () => this.doGetRequest<Vote[]>(this.url('votes'));
+
 	breeds = () => ({
 		list: (params: BreedsListQueryParams = { order: 'asc' }) =>
 			this.breedsList(new URLSearchParams(params).toString()),
@@ -88,5 +95,10 @@ export class TheDogsAPIClient {
 	images = () => ({
 		list: (params: ImagesListQueryParams) =>
 			this.imagesList(new URLSearchParams(params).toString()),
+		getRandomImage: () => this.randomImage(),
+	});
+
+	votes = () => ({
+		list: () => this.votesList(),
 	});
 }
