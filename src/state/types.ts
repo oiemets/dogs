@@ -5,6 +5,8 @@ import {
 	PublicImage,
 	BreedSearchResult,
 	Vote,
+	Favourite,
+	Response,
 } from '../thedogsapi';
 import { Action } from './actions';
 import { Resource } from './resources';
@@ -15,7 +17,9 @@ export type AppState = {
 	breeds?: Resource<Breed[]>;
 	images?: Resource<PublicImage[]>;
 	search?: Resource<BreedSearchResult[]>;
+	favourites?: Resource<Favourite[]>;
 	votes?: Resource<Vote[]>;
+	log?: Response[];
 };
 
 export type Services = {

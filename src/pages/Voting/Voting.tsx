@@ -1,24 +1,55 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ImageWithSocialActions } from '../../components';
-import { getRandomImage, loadRandomImage, useAppDispatch } from '../../state';
+import {
+	useAppDispatch,
+	loadRandomImage,
+	getRandomImageUrlAndId,
+	addFavourite,
+	deleteFavourite,
+	addVote,
+	getLatestLogId,
+} from '../../state';
 import { useTypedSelector } from '../../hooks';
 
 export const Voting: React.FC = () => {
 	const dispatch = useAppDispatch();
-	const image = useTypedSelector(state => getRandomImage(state));
 
-	const onLikeChange = () => console.log('onLikeChange');
-	const onFavourite = () => console.log('onFavourite');
+	const [isFavourited, setIsFavourited] = useState(false);
+	const [isVoted, setIsVoted] = useState(false);
+
+	const image = useTypedSelector(state => getRandomImageUrlAndId(state));
+	const id = useTypedSelector(state => getLatestLogId(state));
 
 	useEffect(() => {
 		dispatch(loadRandomImage());
-	}, [dispatch]);
+	}, [dispatch, isVoted]);
+
+	const onLikeChange = useCallback(
+		value => {
+			if (image.id) {
+				dispatch(addVote({ image_id: image.id, value }));
+				setIsVoted(!isVoted);
+			}
+		},
+		[dispatch, image.id, isVoted]
+	);
+
+	const onFavourite = useCallback(() => {
+		if (!isFavourited && image.id) {
+			dispatch(addFavourite({ image_id: image.id }));
+		} else if (isFavourited && id) {
+			dispatch(deleteFavourite(id));
+		}
+		setIsFavourited(!isFavourited);
+	}, [dispatch, isFavourited, image.id, id]);
+
 	return (
 		<>
 			<ImageWithSocialActions
 				url={image?.url}
-				onLikeChange={onLikeChange}
+				isFavourited={isFavourited}
 				onFavourite={onFavourite}
+				onLikeChange={onLikeChange}
 			/>
 		</>
 	);

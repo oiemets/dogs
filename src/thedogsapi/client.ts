@@ -7,10 +7,11 @@ import {
 	FavouritesListQueryParams,
 	FavouriteID,
 	AddFavouritePayload,
-	AddFavouriteResponse,
 	PublicImage,
 	ImagesListQueryParams,
 	Vote,
+	AddVotePayload,
+	Response,
 } from './types';
 
 export class TheDogsAPIClient {
@@ -31,7 +32,7 @@ export class TheDogsAPIClient {
 
 	private doPostRequest = async <T>(
 		url: string,
-		payload: Record<string, string>
+		payload: Record<string, string | number>
 	) => (await axios.post<T>(url, payload, this.authHeader)).data;
 
 	private doDeleteRequest = async <T>(
@@ -57,7 +58,7 @@ export class TheDogsAPIClient {
 		this.doGetRequest<Favourite>(this.url(`favourites/${id}`));
 
 	private addFavourite = (payload: AddFavouritePayload) =>
-		this.doPostRequest<AddFavouriteResponse>(this.url(`favourites`), payload);
+		this.doPostRequest<Response>(this.url(`favourites`), payload);
 
 	private deleteFavourite = (id: FavouriteID) =>
 		this.doDeleteRequest<Response>(
@@ -74,6 +75,9 @@ export class TheDogsAPIClient {
 
 	/** Votes */
 	private votesList = () => this.doGetRequest<Vote[]>(this.url('votes'));
+
+	private addVote = (payload: AddVotePayload) =>
+		this.doPostRequest<Response>(this.url('votes'), payload);
 
 	breeds = () => ({
 		list: (params: BreedsListQueryParams = { order: 'asc' }) =>
@@ -100,5 +104,6 @@ export class TheDogsAPIClient {
 
 	votes = () => ({
 		list: () => this.votesList(),
+		add: (payload: AddVotePayload) => this.addVote(payload),
 	});
 }

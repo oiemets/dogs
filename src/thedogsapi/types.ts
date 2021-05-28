@@ -58,11 +58,6 @@ export type AddFavouritePayload = {
 	sub_id?: string;
 };
 
-export type AddFavouriteResponse = {
-	message: string;
-	id: string | number;
-};
-
 export type PublicImage = BreedImage & {
 	breeds: Omit<Breed, 'image'>[];
 };
@@ -74,4 +69,17 @@ export type ImagesListQueryParams = ListQueryParams & {
 export type Vote = Omit<Favourite, 'image' | 'user_id'> & {
 	country_code?: string;
 	value?: number;
+};
+
+export type AddVotePayload = {
+	image_id: string;
+	sub_id?: string;
+	value: 0 | 1;
+};
+
+export type Response = {
+	id?: number;
+	level?: string;
+	message?: string;
+	status?: number;
 };
