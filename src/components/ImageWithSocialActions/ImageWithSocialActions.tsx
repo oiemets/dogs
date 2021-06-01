@@ -17,9 +17,10 @@ export const ImageWithSocialActions: React.FC<ImageWithSocialActionsProps> = ({
 	isFavourited,
 	onFavourite,
 	onLikeChange,
+	className,
 }) => {
 	return (
-		<div className={styleNames('root')}>
+		<div className={styleNames('root', className)}>
 			<img src={url} alt={url} className={styleNames('img')} />
 			<SocialActions
 				className={styleNames('actions')}

@@ -1,0 +1,26 @@
+.root {
+	min-width: 493px;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 20px;
+	padding: 20px;
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+.isLoading {
+	min-width: 680px;
+	min-height: 770px;
+	position: relative;
+}
+
+.loadingTitle {
+	font: 400 1em Jost;
+	color: rgba(140, 140, 140, 1);
+	position: absolute;
+	top: 50%;
+	align-self: center;
+}
+
+.image {
+	margin-top: 25px;
+}

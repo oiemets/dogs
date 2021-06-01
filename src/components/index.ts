@@ -7,6 +7,7 @@ export * from './Header';
 export * from './IconButton';
 export * from './IconFrame';
 export * from './ImageWithSocialActions';
+export * from './Log';
 export * from './Logotype';
 export * from './Menu';
 export * from './NavGoBack';

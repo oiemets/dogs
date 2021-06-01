@@ -103,7 +103,7 @@ export const BreedsImages: React.FC = () => {
 
 	return (
 		<>
-			<div className={styleNames('root', { isLoading: isLoading })}>
+			<div className={styleNames('root', { isLoading })}>
 				<div className={styleNames('nav')}>
 					<NavGoBack title='breeds' />
 					{!isLoading && !search ? (

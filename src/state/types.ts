@@ -6,12 +6,12 @@ import {
 	BreedSearchResult,
 	Vote,
 	Favourite,
-	Response,
 } from '../thedogsapi';
 import { Action } from './actions';
 import { Resource } from './resources';
 import { Selector } from 'reselect';
 import { History } from 'history';
+import { LogInfo } from '../state';
 
 export type AppState = {
 	breeds?: Resource<Breed[]>;
@@ -19,7 +19,7 @@ export type AppState = {
 	search?: Resource<BreedSearchResult[]>;
 	favourites?: Resource<Favourite[]>;
 	votes?: Resource<Vote[]>;
-	log?: Response[];
+	log?: LogInfo[];
 };
 
 export type Services = {

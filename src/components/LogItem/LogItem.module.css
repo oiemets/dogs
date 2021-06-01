@@ -1,0 +1,63 @@
+.root {
+	width: 100%;
+	min-height: 60px;
+	color: #8c8c8c;
+	background-color: #f8f8f7;
+	border-radius: 20px;
+	padding: 20px;
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+}
+
+.title,
+.time,
+.text,
+.location {
+	margin: 0;
+	font: 400 16px/24px Jost;
+}
+
+.time {
+	padding: 3px 10px;
+	color: #1d1d1d;
+	background-color: #ffffff;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+
+.id {
+	color: #1d1d1d;
+	font-weight: 500;
+}
+
+.location {
+	text-transform: capitalize;
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
+}
+
+.icon path {
+	fill: currentColor;
+}
+
+.favourites {
+	color: #ff868e;
+}
+
+.likes {
+	color: #97eab9;
+}
+
+.dislikes {
+	color: #ffd280;
+}

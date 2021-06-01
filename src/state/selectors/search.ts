@@ -15,8 +15,8 @@ export const searchDataWithImages = createSelector(
 	searchData,
 	breedsData,
 	(search, breeds) =>
-		search.map(r => ({
-			...r,
-			image: breeds.find(({ id }) => id === r.id)?.image,
+		search.map(i => ({
+			...i,
+			image: breeds.find(({ id }) => id === i.id)?.image,
 		}))
 );
