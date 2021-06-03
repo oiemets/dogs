@@ -35,7 +35,12 @@ export const getLog = createSelector(
 	favouritesToLog,
 	votesToLog,
 	(log, favourites, votes) => {
-		return [...log, ...favourites, ...votes];
+		const result = [...log, ...favourites, ...votes].sort(
+			(a: LogInfo, b: LogInfo) =>
+				new Date(b.created_at ?? '').getTime() -
+				new Date(a.created_at ?? '').getTime()
+		);
+		return result;
 	}
 );
 

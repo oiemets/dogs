@@ -13,7 +13,7 @@ const iconsMap = {
 
 type LogItemProps = {
 	className?: string;
-	icon: keyof typeof iconsMap;
+	icon?: keyof typeof iconsMap;
 	image_id?: string | number;
 	time?: string;
 	location?: string;
@@ -22,7 +22,7 @@ type LogItemProps = {
 
 export const LogItem: React.FC<LogItemProps> = ({
 	className,
-	icon,
+	icon = 'favourites',
 	image_id,
 	time,
 	location,
@@ -34,12 +34,12 @@ export const LogItem: React.FC<LogItemProps> = ({
 			<div className={styleNames('info')}>
 				<h3 className={styleNames('time')}>{`${time}`}</h3>
 				<h3 className={styleNames('title')}>
-					Image ID: <span className={styleNames('id')}>{`${image_id} `}</span>
+					Image ID:<span className={styleNames('id')}>{`${image_id}`}</span>
 					<span className={styleNames('text')}>{`${text}`}</span>
 					<span className={styleNames('location')}>{`${location}`}</span>
 				</h3>
 			</div>
-			<Icon className={styleNames('icon', icon)} />
+			{icon !== 'none' && <Icon className={styleNames('icon', icon)} />}
 		</div>
 	);
 };
