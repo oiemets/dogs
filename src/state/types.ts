@@ -4,22 +4,23 @@ import {
 	TheDogsAPIClient,
 	PublicImage,
 	BreedSearchResult,
-	Vote,
-	Favourite,
+	VoteResponse,
+	FavouriteResponse,
+	ActionValue,
 } from '../thedogsapi';
 import { Action } from './actions';
 import { Resource } from './resources';
 import { Selector } from 'reselect';
 import { History } from 'history';
-import { LogInfo } from '../state';
+
+export type Favourite = FavouriteResponse & { value: ActionValue };
 
 export type AppState = {
 	breeds?: Resource<Breed[]>;
 	images?: Resource<PublicImage[]>;
 	search?: Resource<BreedSearchResult[]>;
 	favourites?: Resource<Favourite[]>;
-	votes?: Resource<Vote[]>;
-	log?: LogInfo[];
+	votes?: Resource<VoteResponse[]>;
 };
 
 export type Services = {

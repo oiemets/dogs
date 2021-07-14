@@ -7,8 +7,11 @@ import {
 	addFavourite,
 	deleteFavourite,
 	addVote,
-	getLatestLogId,
 	imagesReady,
+	loadVotes,
+	loadFavourites,
+	actionsLog,
+	actionsLogReady,
 } from '../../state';
 import { useTypedSelector } from '../../hooks';
 import bindStyles from 'classnames/bind';
@@ -19,53 +22,54 @@ const styleNames = bindStyles.bind(styles);
 export const Voting: React.FC = () => {
 	const dispatch = useAppDispatch();
 
-	const [isFavourited, setIsFavourited] = useState(false);
-	const [isVoted, setIsVoted] = useState(false);
+	// const [isFavourited, setIsFavourited] = useState(false);
+	// const [isVoted, setIsVoted] = useState(false);
 
-	const isLoading = !useTypedSelector(state => imagesReady(state));
+	// const isLoading = !useTypedSelector(state => imagesReady(state));
 	const image = useTypedSelector(state => getRandomImageUrlAndId(state));
-	const id = useTypedSelector(state => getLatestLogId(state));
+	// const id = useTypedSelector(state => getLatestLogId(state));
 
 	useEffect(() => {
 		dispatch(loadRandomImage());
-	}, [dispatch, isVoted]);
+		dispatch(loadVotes());
+		dispatch(loadFavourites());
+	}, [dispatch]);
 
-	const onLikeChange = useCallback(
-		value => {
-			if (image.id) {
-				dispatch(addVote({ image_id: image.id, value }));
-				setIsVoted(!isVoted);
-			}
-		},
-		[dispatch, image.id, isVoted]
-	);
+	const log = useTypedSelector(state => actionsLog(state));
+	const isLogReady = useTypedSelector(state => actionsLogReady(state));
 
-	const onFavourite = useCallback(() => {
-		if (!isFavourited && image.id) {
-			dispatch(addFavourite({ image_id: image.id }));
-		} else if (isFavourited && id && image.id) {
-			dispatch(deleteFavourite(id, image.id));
-		}
-		setIsFavourited(!isFavourited);
-	}, [dispatch, isFavourited, image.id, id]);
+	// const onLikeChange = useCallback(
+	// 	value => {
+	// 		if (image.id) {
+	// 			dispatch(addVote({ image_id: image.id, value }));
+	// 			setIsVoted(!isVoted);
+	// 		}
+	// 	},
+	// 	[dispatch, image.id, isVoted]
+	// );
+
+	// const onFavourite = useCallback(() => {
+	// 	if (!isFavourited && image.id) {
+	// 		dispatch(addFavourite({ image_id: image.id }));
+	// 	} else if (isFavourited && id && image.id) {
+	// 		dispatch(deleteFavourite(id, image.id));
+	// 	}
+	// 	setIsFavourited(!isFavourited);
+	// }, [dispatch, isFavourited, image.id, id]);
 
 	return (
-		<div className={styleNames('root', { isLoading })}>
+		<div className={styleNames('root')}>
 			<NavGoBack title='voting' />
-			{!isLoading ? (
-				<>
-					<ImageWithSocialActions
-						className={styleNames('image')}
-						url={image?.url}
-						isFavourited={isFavourited}
-						onFavourite={onFavourite}
-						onLikeChange={onLikeChange}
-					/>
-					<Log />
-				</>
-			) : (
-				<h3 className={styleNames('loadingTitle')}>Image is loading...</h3>
-			)}
+			<>
+				<ImageWithSocialActions
+					className={styleNames('image')}
+					url={image?.url}
+					isFavourited={true}
+					onFavourite={() => {}}
+					onLikeChange={() => {}}
+				/>
+				{isLogReady ? <Log data={log} /> : 'Loading log...'}
+			</>
 		</div>
 	);
 };

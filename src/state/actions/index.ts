@@ -3,7 +3,6 @@ import { ImagesLoadStart, ImagesLoadSuccess } from './images';
 import { SearchLoadStart, SearchLoadSuccess } from './search';
 import { FavouritesLoadStart, FavouritesLoadSuccess } from './favourites';
 import { VotesLoadStart, VotesLoadSuccess } from './votes';
-import { Log } from './log';
 
 export type Action =
 	| BreedsLoadStart
@@ -15,8 +14,7 @@ export type Action =
 	| FavouritesLoadStart
 	| FavouritesLoadSuccess
 	| VotesLoadStart
-	| VotesLoadSuccess
-	| Log;
+	| VotesLoadSuccess;
 
 export * from './breeds';
 export * from './images';
@@ -24,4 +22,3 @@ export * from './search';
 export * from './navigation';
 export * from './favourites';
 export * from './votes';
-export * from './log';

@@ -5,24 +5,24 @@ import { Heart, Smile, Sad } from '../../assets';
 const styleNames = bindStyles.bind(styles);
 
 const iconsMap = {
-	favourites: Heart,
-	dislikes: Sad,
-	likes: Smile,
-	none: '',
+	favorite: Heart,
+	dislike: Sad,
+	like: Smile,
+	none: null,
 };
 
-type LogItemProps = {
+export type LogItemProps = {
+	icon: keyof typeof iconsMap;
 	className?: string;
-	icon?: keyof typeof iconsMap;
 	image_id?: string | number;
 	time?: string;
-	location?: string;
+	location: 'Favorites' | 'Likes' | 'Dislikes';
 	text?: string;
 };
 
 export const LogItem: React.FC<LogItemProps> = ({
 	className,
-	icon = 'favourites',
+	icon,
 	image_id,
 	time,
 	location,
@@ -39,7 +39,7 @@ export const LogItem: React.FC<LogItemProps> = ({
 					<span className={styleNames('location')}>{`${location}`}</span>
 				</h3>
 			</div>
-			{icon !== 'none' && <Icon className={styleNames('icon', icon)} />}
+			{Icon && <Icon className={styleNames('icon', icon)} />}
 		</div>
 	);
 };

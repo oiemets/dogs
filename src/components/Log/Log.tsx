@@ -1,36 +1,59 @@
 import { useEffect } from 'react';
 import bindStyles from 'classnames/bind';
 import styles from './Log.module.css';
-import { LogItem } from '../LogItem';
+import { LogItem, LogItemProps } from '../LogItem';
 import { useTypedSelector } from '../../hooks';
-import { useAppDispatch, loadVotes, loadFavourites, getLog } from '../../state';
+import {
+	useAppDispatch,
+	loadVotes,
+	loadFavourites,
+	actionsLog,
+	LogItem as LogItemData,
+} from '../../state';
 import { getTimeFromIso, getDateFromIso } from '../../utils';
+import { ActionValue } from '../../thedogsapi';
 
 const styleNames = bindStyles.bind(styles);
 
-export const Log: React.FC = () => {
-	const dispatch = useAppDispatch();
+export type LogProps = {
+	data: LogItemData[];
+};
 
-	useEffect(() => {
-		dispatch(loadVotes());
-		dispatch(loadFavourites());
-	}, [dispatch]);
+const getIconName = (
+	type: LogItemData['type'],
+	value: ActionValue
+): LogItemProps['icon'] => {
+	switch (type) {
+		case 'favorite':
+			return value ? 'favorite' : 'none';
+		case 'vote':
+			return value ? 'like' : 'dislike';
+	}
+};
 
-	const log = useTypedSelector(state => getLog(state));
+const getLocationName = (
+	type: LogItemData['type'],
+	value: ActionValue
+): LogItemProps['location'] => {
+	switch (type) {
+		case 'favorite':
+			return 'Favorites';
+		case 'vote':
+			return value ? 'Likes' : 'Dislikes';
+	}
+};
 
+export const Log: React.FC<LogProps> = ({ data }) => {
 	return (
 		<div className={styleNames('root')}>
-			{log.map(({ image_id, created_at, location, action, message }) => (
+			{data.map(({ created_at, value, type, image_id }) => (
 				<LogItem
 					key={created_at}
-					icon={action === 'added' ? location : 'none'}
+					icon={getIconName(type, value)}
 					time={getDateFromIso(created_at ?? '')}
 					image_id={image_id}
-					text={`${!message || message === 'SUCCESS' ? 'was' : "wasn't"}
-          ${action}
-          ${action === 'added' ? 'to' : 'from'}
-          `}
-					location={location}
+					text='image was'
+					location={getLocationName(type, value)}
 				/>
 			))}
 		</div>

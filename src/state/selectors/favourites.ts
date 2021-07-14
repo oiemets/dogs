@@ -13,14 +13,3 @@ export const favouritesReady = createSelector(favourites, favourites =>
 export const favouritesData = createSelector(favourites, favourites =>
 	favourites ? getData(favourites) : []
 );
-
-export const getRandomImageFavouriteId = createSelector(
-	getRandomImageUrlAndId,
-	favouritesData,
-	(image, favourites) => {
-		const favourite = favourites.find(f => f.image_id === image.id);
-		if (favourite) {
-			return favourite.id;
-		}
-	}
-);

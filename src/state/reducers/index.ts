@@ -5,7 +5,6 @@ import { images } from './images';
 import { search } from './search';
 import { favourites } from './favourites';
 import { votes } from './votes';
-import { log } from './log';
 
 export default combineReducers<AppState>({
 	breeds,
@@ -13,5 +12,4 @@ export default combineReducers<AppState>({
 	search,
 	favourites,
 	votes,
-	log,
 });

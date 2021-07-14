@@ -3,15 +3,15 @@ import {
 	Breed,
 	BreedSearchResult,
 	BreedsListQueryParams,
-	Favourite,
+	FavouriteResponse,
 	FavouritesListQueryParams,
 	FavouriteID,
 	AddFavouritePayload,
 	PublicImage,
 	ImagesListQueryParams,
-	Vote,
+	VoteResponse,
 	AddVotePayload,
-	Response,
+	ActionResponse,
 } from './types';
 
 export class TheDogsAPIClient {
@@ -52,16 +52,16 @@ export class TheDogsAPIClient {
 
 	/** Favourites */
 	private favouritesList = (params: string) =>
-		this.doGetRequest<Favourite[]>(this.url(`favourites?${params}`));
+		this.doGetRequest<FavouriteResponse[]>(this.url(`favourites?${params}`));
 
 	private getFavourite = (id: FavouriteID) =>
-		this.doGetRequest<Favourite>(this.url(`favourites/${id}`));
+		this.doGetRequest<FavouriteResponse>(this.url(`favourites/${id}`));
 
 	private addFavourite = (payload: AddFavouritePayload) =>
-		this.doPostRequest<Response>(this.url(`favourites`), payload);
+		this.doPostRequest<ActionResponse>(this.url(`favourites`), payload);
 
 	private deleteFavourite = (id: FavouriteID) =>
-		this.doDeleteRequest<Response>(
+		this.doDeleteRequest<ActionResponse>(
 			this.url(`favourites/${id}`),
 			this.authHeader
 		);
@@ -74,10 +74,11 @@ export class TheDogsAPIClient {
 		this.doGetRequest<PublicImage[]>(this.url('images/search'));
 
 	/** Votes */
-	private votesList = () => this.doGetRequest<Vote[]>(this.url('votes'));
+	private votesList = () =>
+		this.doGetRequest<VoteResponse[]>(this.url('votes'));
 
 	private addVote = (payload: AddVotePayload) =>
-		this.doPostRequest<Response>(this.url('votes'), payload);
+		this.doPostRequest<ActionResponse>(this.url('votes'), payload);
 
 	breeds = () => ({
 		list: (params: BreedsListQueryParams = { order: 'asc' }) =>

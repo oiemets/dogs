@@ -1,7 +1,7 @@
 import { Action } from '../actions';
-import { Favourite } from '../../thedogsapi';
+import { FavouriteResponse } from '../../thedogsapi';
 import { loading, create, setData, ready } from '../resources';
-import { AppState } from '../types';
+import { AppState, Favourite } from '../types';
 
 export const favourites = (state: AppState['favourites'], action: Action) => {
 	const ensured = ensure(state);

@@ -38,13 +38,15 @@ export type BreedsListQueryParams = ListQueryParams & {
 	order?: 'asc' | 'desc';
 };
 
-export type Favourite = {
-	created_at: string;
+export type ActionValue = 1 | 0;
+
+export type FavouriteResponse = {
 	id: FavouriteID;
+	created_at: string;
 	image_id: string;
-	image?: Image;
-	sub_id?: string;
-	user_id?: string;
+	image: Partial<Image>;
+	sub_id: string | null;
+	user_id: string;
 };
 
 export type FavouritesListQueryParams = ListQueryParams & {
@@ -66,20 +68,22 @@ export type ImagesListQueryParams = ListQueryParams & {
 	breed_id: string;
 };
 
-export type Vote = Omit<Favourite, 'image' | 'user_id'> & {
-	country_code?: string;
-	value?: number;
+export type VoteResponse = {
+	country_code: string;
+	created_at: string;
+	id: number | string;
+	image_id: string;
+	sub_id: string | null;
+	value: ActionValue;
 };
 
 export type AddVotePayload = {
 	image_id: string;
 	sub_id?: string;
-	value: 0 | 1;
+	value: ActionValue;
 };
 
-export type Response = {
-	id?: number;
-	level?: string;
-	message?: string;
-	status?: number;
+export type ActionResponse = {
+	id: number;
+	message: string;
 };
