@@ -52,7 +52,6 @@ export const Log: React.FC<LogProps> = ({ data }) => {
 					icon={getIconName(type, value)}
 					time={getDateFromIso(created_at ?? '')}
 					image_id={image_id}
-					text='image was'
 					location={getLocationName(type, value)}
 				/>
 			))}

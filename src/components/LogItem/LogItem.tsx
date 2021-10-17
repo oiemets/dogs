@@ -17,7 +17,6 @@ export type LogItemProps = {
 	image_id?: string | number;
 	time?: string;
 	location: 'Favorites' | 'Likes' | 'Dislikes';
-	text?: string;
 };
 
 export const LogItem: React.FC<LogItemProps> = ({
@@ -26,7 +25,6 @@ export const LogItem: React.FC<LogItemProps> = ({
 	image_id,
 	time,
 	location,
-	text,
 }) => {
 	const Icon = iconsMap[icon];
 	return (
@@ -35,8 +33,10 @@ export const LogItem: React.FC<LogItemProps> = ({
 				<h3 className={styleNames('time')}>{`${time}`}</h3>
 				<h3 className={styleNames('title')}>
 					Image ID:<span className={styleNames('id')}>{`${image_id}`}</span>
-					<span className={styleNames('text')}>{`${text}`}</span>
-					<span className={styleNames('location')}>{`${location}`}</span>
+					<span className={styleNames('text')}>
+						was added to {`${location}`}
+					</span>
+					{/* <span className={styleNames('location')}>{`${location}`}</span> */}
 				</h3>
 			</div>
 			{Icon && <Icon className={styleNames('icon', icon)} />}

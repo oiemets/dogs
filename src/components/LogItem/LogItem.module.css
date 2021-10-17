@@ -51,14 +51,14 @@
 	fill: currentColor;
 }
 
-.favourites {
+.favorite {
 	color: #ff868e;
 }
 
-.likes {
+.like {
 	color: #97eab9;
 }
 
-.dislikes {
+.dislike {
 	color: #ffd280;
 }

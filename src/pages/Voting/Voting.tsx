@@ -22,12 +22,7 @@ const styleNames = bindStyles.bind(styles);
 export const Voting: React.FC = () => {
 	const dispatch = useAppDispatch();
 
-	// const [isFavourited, setIsFavourited] = useState(false);
-	// const [isVoted, setIsVoted] = useState(false);
-
-	// const isLoading = !useTypedSelector(state => imagesReady(state));
 	const image = useTypedSelector(state => getRandomImageUrlAndId(state));
-	// const id = useTypedSelector(state => getLatestLogId(state));
 
 	useEffect(() => {
 		dispatch(loadRandomImage());
@@ -38,24 +33,19 @@ export const Voting: React.FC = () => {
 	const log = useTypedSelector(state => actionsLog(state));
 	const isLogReady = useTypedSelector(state => actionsLogReady(state));
 
-	// const onLikeChange = useCallback(
-	// 	value => {
-	// 		if (image.id) {
-	// 			dispatch(addVote({ image_id: image.id, value }));
-	// 			setIsVoted(!isVoted);
-	// 		}
-	// 	},
-	// 	[dispatch, image.id, isVoted]
-	// );
-
-	// const onFavourite = useCallback(() => {
-	// 	if (!isFavourited && image.id) {
-	// 		dispatch(addFavourite({ image_id: image.id }));
-	// 	} else if (isFavourited && id && image.id) {
-	// 		dispatch(deleteFavourite(id, image.id));
-	// 	}
-	// 	setIsFavourited(!isFavourited);
-	// }, [dispatch, isFavourited, image.id, id]);
+	const onClick = useCallback(
+		value => {
+			if (image.id) {
+				dispatch(
+					addVote({
+						image_id: image.id,
+						value,
+					})
+				);
+			}
+		},
+		[dispatch, image.id]
+	);
 
 	return (
 		<div className={styleNames('root')}>
@@ -66,7 +56,7 @@ export const Voting: React.FC = () => {
 					url={image?.url}
 					isFavourited={true}
 					onFavourite={() => {}}
-					onLikeChange={() => {}}
+					onLikeChange={onClick}
 				/>
 				{isLogReady ? <Log data={log} /> : 'Loading log...'}
 			</>
