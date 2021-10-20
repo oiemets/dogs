@@ -1,5 +1,4 @@
 import { Action } from '../actions';
-import { FavouriteResponse } from '../../thedogsapi';
 import { loading, create, setData, ready } from '../resources';
 import { AppState, Favourite } from '../types';
 

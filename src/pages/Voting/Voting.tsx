@@ -63,6 +63,8 @@ export const Voting: React.FC = () => {
 		dispatch(loadFavourites());
 	}, [dispatch, image.id, isFavourited, favourited]);
 
+	console.log(process.env.REACT_APP_DOGS_KEY);
+
 	return (
 		<div className={styleNames('root')}>
 			<NavGoBack title='voting' />
