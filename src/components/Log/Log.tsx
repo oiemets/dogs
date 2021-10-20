@@ -1,16 +1,8 @@
-import { useEffect } from 'react';
 import bindStyles from 'classnames/bind';
 import styles from './Log.module.css';
 import { LogItem, LogItemProps } from '../LogItem';
-import { useTypedSelector } from '../../hooks';
-import {
-	useAppDispatch,
-	loadVotes,
-	loadFavourites,
-	actionsLog,
-	LogItem as LogItemData,
-} from '../../state';
-import { getTimeFromIso, getDateFromIso } from '../../utils';
+import { LogItem as LogItemData } from '../../state';
+import { getDateFromIso } from '../../utils';
 import { ActionValue } from '../../thedogsapi';
 
 const styleNames = bindStyles.bind(styles);
@@ -24,8 +16,8 @@ const getIconName = (
 	value: ActionValue
 ): LogItemProps['icon'] => {
 	switch (type) {
-		case 'favorite':
-			return value ? 'favorite' : 'none';
+		case 'favourite':
+			return value ? 'favourite' : 'none';
 		case 'vote':
 			return value ? 'like' : 'dislike';
 	}
@@ -36,7 +28,7 @@ const getLocationName = (
 	value: ActionValue
 ): LogItemProps['location'] => {
 	switch (type) {
-		case 'favorite':
+		case 'favourite':
 			return 'Favorites';
 		case 'vote':
 			return value ? 'Likes' : 'Dislikes';

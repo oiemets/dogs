@@ -1,8 +1,5 @@
 import { AddFavouritePayload, FavouriteID } from '../../thedogsapi';
-
 import { AppAction, AppCommand, Favourite } from '../types';
-// import { log, logInfo } from './log';
-import { currentIsoDate } from '../../utils';
 import { convertFavoriteResponseToFavorite } from './utils';
 
 export type FavouritesLoadStart = AppAction<'FavouritesLoadStart'>;
@@ -37,23 +34,14 @@ export const loadFavourites = (): AppCommand => async (
 
 export const addFavourite = (
 	payload: AddFavouritePayload
-): AppCommand => async (dispatch, __, { api }) => {
-	// const add = await api.favourites().add(payload);
-	// const { image_id } = payload;
-	// dispatch(
-	//   add
-	// );
+): AppCommand => async (_, __, { api }) => {
+	api.favourites().add(payload);
 };
 
-export const deleteFavourite = (
-	id: FavouriteID,
-	image_id: string
-): AppCommand => async (dispatch, __, { api }) => {
-	const deleteResponse = await api.favourites().delete(id);
-	// dispatch(
-	// 	log({
-	// 		...deleteResponse,
-	// 		...logInfo(image_id, 'removed', 'favourites', currentIsoDate()),
-	// 	})
-	// );
+export const deleteFavourite = (id: FavouriteID): AppCommand => async (
+	_,
+	__,
+	{ api }
+) => {
+	api.favourites().delete(id);
 };

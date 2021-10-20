@@ -5,7 +5,7 @@ import { Heart, Smile, Sad } from '../../assets';
 const styleNames = bindStyles.bind(styles);
 
 const iconsMap = {
-	favorite: Heart,
+	favourite: Heart,
 	dislike: Sad,
 	like: Smile,
 	none: null,

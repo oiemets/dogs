@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import { AppSelector, AppState } from '../types';
 import { isReady, getData } from '../resources';
-import { getRandomImageUrlAndId } from './images';
 
 export const favourites: AppSelector<AppState['favourites']> = state =>
 	state.favourites;

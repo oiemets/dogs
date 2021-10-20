@@ -5,7 +5,7 @@ import { favouritesData, favouritesReady } from './favourites';
 import { votesData, votesReady } from './votes';
 
 export type LogItem = (VoteResponse | Favourite) & {
-	type: 'favorite' | 'vote';
+	type: 'favourite' | 'vote';
 };
 
 export const actionsLog = createSelector<
@@ -14,7 +14,7 @@ export const actionsLog = createSelector<
 	VoteResponse[],
 	LogItem[]
 >(favouritesData, votesData, (favorites, votes) => [
-	...favorites.map<LogItem>(favorite => ({ ...favorite, type: 'favorite' })),
+	...favorites.map<LogItem>(favourite => ({ ...favourite, type: 'favourite' })),
 	...votes.map<LogItem>(vote => ({ ...vote, type: 'vote' })),
 ]);
 

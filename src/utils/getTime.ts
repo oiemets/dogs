@@ -42,3 +42,5 @@ export const getTimeFromIso = (iso: string) => {
 	const time = addZero(today.getHours()) + ':' + addZero(today.getMinutes());
 	return time;
 };
+
+export const isoToTimestamp = (iso: string) => new Date(iso).getTime();
