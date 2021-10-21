@@ -27,7 +27,7 @@ export const Voting: React.FC = () => {
 		dispatch(loadRandomImage());
 		dispatch(loadVotes());
 		dispatch(loadFavourites());
-	}, [dispatch]);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const log = useTypedSelector(state => actionsLog(state)).sort(
 		(a, b) => isoToTimestamp(b.created_at) - isoToTimestamp(a.created_at)
