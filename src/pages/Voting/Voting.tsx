@@ -74,7 +74,11 @@ export const Voting: React.FC = () => {
 					onFavourite={onFavourite}
 					onLikeChange={onClick}
 				/>
-				{isLogReady ? <Log data={log} /> : 'Loading log...'}
+				{isLogReady ? (
+					<Log data={log} />
+				) : (
+					<div className={styleNames('loading')}>Loading log...</div>
+				)}
 			</>
 		</div>
 	);

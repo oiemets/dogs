@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	SocialActions,
 	SocialActionsProps,
@@ -19,15 +19,24 @@ export const ImageWithSocialActions: React.FC<ImageWithSocialActionsProps> = ({
 	onLikeChange,
 	className,
 }) => {
+	const [imgIsLoaded, setImgIsLoaded] = useState(false);
+
 	return (
 		<div className={styleNames('root', className)}>
-			<img src={url} alt={url} className={styleNames('img')} />
-			<SocialActions
-				className={styleNames('actions')}
-				isFavourited={isFavourited}
-				onFavourite={onFavourite}
-				onLikeChange={onLikeChange}
+			<img
+				src={url}
+				alt={url}
+				className={styleNames({ img: imgIsLoaded })}
+				onLoad={() => setImgIsLoaded(true)}
 			/>
+			{imgIsLoaded && (
+				<SocialActions
+					className={styleNames('actions')}
+					isFavourited={isFavourited}
+					onFavourite={onFavourite}
+					onLikeChange={onLikeChange}
+				/>
+			)}
 		</div>
 	);
 };
