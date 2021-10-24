@@ -7,20 +7,14 @@
 	flex-flow: column nowrap;
 }
 
-.isLoading {
-	min-width: 680px;
-	min-height: 770px;
-	position: relative;
-}
-
-.loadingTitle {
-	font: 400 1em Jost;
-	color: rgba(140, 140, 140, 1);
-	position: absolute;
-	top: 50%;
-	align-self: center;
-}
-
 .image {
 	margin-top: 25px;
+}
+
+.loading {
+	color: #8c8c8c;
+	font: 400 1em Jost;
+	width: max-content;
+	padding: 1em;
+	align-self: center;
 }
